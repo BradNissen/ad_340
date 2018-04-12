@@ -4,4 +4,5 @@
     <string name="personal_info">Nissen, Brad 04/09/2018</string>
     <string name="button_text">Change Text</string>
     <string name="goodbye_world">Goodbye, World!</string>
+    <string name="notice_textView">(volume up!)</string>
 </resources>

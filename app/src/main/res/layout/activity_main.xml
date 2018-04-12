@@ -44,4 +44,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/changeText" />
 
+    <TextView
+        android:id="@+id/notice_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/notice_textView"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
 </android.support.constraint.ConstraintLayout>
