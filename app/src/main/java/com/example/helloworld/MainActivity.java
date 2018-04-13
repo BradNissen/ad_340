@@ -12,19 +12,15 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView helloText;
     private Button button;
-
     MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //opens up the activity
         setContentView(R.layout.activity_main);
-
         //add the changeText
         this.helloText = findViewById(R.id.changeText);
-
         //add the button to the button object.
         this.button = findViewById(R.id.button);
 
@@ -51,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     helloText.setText(R.string.hello_world);
 
                 }
+
             }
         });
 

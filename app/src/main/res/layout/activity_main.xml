@@ -46,11 +46,11 @@
 
     <TextView
         android:id="@+id/notice_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"
+        android:layout_width="81dp"
+        android:layout_height="21dp"
         android:layout_marginTop="5dp"
         android:text="@string/notice_textView"
-        android:textSize="10sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
