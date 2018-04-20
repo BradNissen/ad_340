@@ -54,7 +54,13 @@ public class SecondActivity extends AppCompatActivity {
 //            msg.append("D.O.B.: "+ dob).append("\n");
 //        }
 
-        messageView.setText(msg);
+        if (b.containsKey(Constants.KEY_AGE)){
+            String age = b.getString(Constants.KEY_AGE);
+            msg.append("\nForm\nif you didnt know... You're "+ age + " years old.");
+        }
+
+
+            messageView.setText(msg);
     }
 
     public void goToMainActivity(View view){

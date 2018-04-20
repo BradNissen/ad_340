@@ -1,8 +1,7 @@
 package com.example.helloworld;
 /*
-android built in regex for validation for emails.
 have it display the age in a text view.
- */
+*/
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,7 +15,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+
+
 import java.util.Calendar;
+import java.util.Date;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Button errorButton;
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,56 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
+    private boolean checkEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+    }
+
+    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+    );
+
+
+
+    public static int getAge(Date dateOfBirth) {
+
+        Calendar today = Calendar.getInstance();
+        Calendar birthDate = Calendar.getInstance();
+        birthDate.setTime(dateOfBirth);
+        if (birthDate.after(today)) {
+            throw new IllegalArgumentException("You don't exist yet");
+        }
+        int todayYear = today.get(Calendar.YEAR);
+        int birthDateYear = birthDate.get(Calendar.YEAR);
+        int todayDayOfYear = today.get(Calendar.DAY_OF_YEAR);
+        int birthDateDayOfYear = birthDate.get(Calendar.DAY_OF_YEAR);
+        int todayMonth = today.get(Calendar.MONTH);
+        int birthDateMonth = birthDate.get(Calendar.MONTH);
+        int todayDayOfMonth = today.get(Calendar.DAY_OF_MONTH);
+        int birthDateDayOfMonth = birthDate.get(Calendar.DAY_OF_MONTH);
+        int age = todayYear - birthDateYear;
+
+        // If birth date is greater than todays date (after 2 days adjustment of leap year) then decrement age one year
+        if ((birthDateDayOfYear - todayDayOfYear > 3) || (birthDateMonth > todayMonth)){
+            age--;
+
+            // If birth date and todays date are of same month and birth day of month is greater than todays day of month then decrement age
+        } else if ((birthDateMonth == todayMonth) && (birthDateDayOfMonth > todayDayOfMonth)){
+            age--;
+        }
+        return age;
+    }
+
+
+
+
+
+
     public boolean is18(int MM, int DD, int YYYY){
         int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
@@ -103,12 +161,19 @@ public class MainActivity extends AppCompatActivity {
         return age;
     }
 
-
     public void goToSecondActivity(View view) {
 
         StringBuilder errMsg = new StringBuilder();
         int numErrors = 0;
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+
+        Calendar birthday = Calendar.getInstance();
+        birthday.set(year_x, month_x, day_x);
+        int age = getAge(birthday.getTime());
+        String ageString = String.valueOf(age);
+
+
 
 
         if (isValid(nameInput)){
@@ -128,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        if (isValid(emailInput)) {
+        if (checkEmail(emailInput.getText().toString())) {
             intent.putExtra(Constants.KEY_EMAIL, emailInput.getText().toString());
         } else {
             numErrors += 1;
@@ -136,7 +201,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        if (is18(month_x, day_x, year_x) && year_x>0) {
+        if (is18(month_x, day_x, year_x) && ageString.length()>1) {
+
+
+            intent.putExtra(Constants.KEY_AGE, ageString);
+
             intent.putExtra(Constants.KEY_DOB, month_x + "/" + day_x + "/" + year_x);
         } else {
             numErrors += 1;
