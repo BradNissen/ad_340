@@ -15,10 +15,4 @@
     <string name="age_printer">if you didnt know... You\'re</string>
     <string name="youre">You\'re</string>
     <string name="hello">Hello</string>
-    <string name="name_in_error">name input error</string>
-    <string name="username_in_error">username input error</string>
-    <string name="email_in_error">email input error</string>
-    <string name="birth_in_error">birthday input error</string>
-    <string name="submit">Submit</string>
-    <string name="not18yet">You must be 18 yrs old.</string>
 </resources>

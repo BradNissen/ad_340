@@ -70,7 +70,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.SubmitButton)).perform(click());
 
-        //onView(withId(R.id.messageTextView)).check(matches(withText("Thanks for signing up, Brad!\n\nYou're 27 years old")));
+        onView(withId(R.id.messageTextView)).check(matches(withText("Thanks for signing up, Brad!\n\nYou're 27 years old")));
 
         // go back and check the test is gone.
 
