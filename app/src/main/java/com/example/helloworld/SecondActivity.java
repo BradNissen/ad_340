@@ -56,7 +56,7 @@ public class SecondActivity extends AppCompatActivity {
 
         if (b.containsKey(Constants.KEY_AGE)){
             String age = b.getString(Constants.KEY_AGE);
-            msg.append("\nForm\nif you didnt know... You're "+ age + " years old.");
+            msg.append("\n\nYou're ").append(age).append(" years old");
         }
 
 

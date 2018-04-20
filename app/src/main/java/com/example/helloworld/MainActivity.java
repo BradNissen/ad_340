@@ -81,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 if (is18(month, day, year)){
                     mDisplayDate.setText(date +"\n");
                          if ((nameInput != null) && (userNameInput != null) && (emailInput != null))
-                             errorButton.setText("Submit");
+                             errorButton.setText(R.string.submit);
                 }
                 else {
                     mDisplayDate.setText(date +"\n");
-                    errorButton.setText("You must be 18 yrs old.");
+                    errorButton.setText(R.string.not18yet);
                 }
             }
         };
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             numErrors += 1;
-            errMsg.append("name input error").append("\n");
+            errMsg.append(getString(R.string.name_in_error)).append("\n");
         }
 
 
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_USER_NAME, userNameInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append("username input error").append("\n");
+            errMsg.append(getString(R.string.username_in_error)).append("\n");
         }
 
 
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_EMAIL, emailInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append("email input error").append("\n");
+            errMsg.append(getString(R.string.email_in_error)).append("\n");
         }
 
 
@@ -209,12 +209,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_DOB, month_x + "/" + day_x + "/" + year_x);
         } else {
             numErrors += 1;
-            errMsg.append("birthday input error");
+            errMsg.append(getString(R.string.birth_in_error));
         }
 
         // if there are no errors to display, then begin the activity.
         if (numErrors == 0) {
-            errorButton.setText("Submit");
+            errorButton.setText(R.string.submit);
             startActivity(intent);
 
         } else {
