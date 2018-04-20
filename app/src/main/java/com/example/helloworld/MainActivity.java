@@ -4,8 +4,6 @@ android built in regex for validation for emails.
 have it display the age in a text view.
 
  */
-
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;

@@ -11,4 +11,5 @@
     <string name="user_name_input">Enter User Name…</string>
     <string name="email_input">Enter Email Address…</string>
     <string name="helloTEST">HELLO</string>
+    <string name="back_button">Go Back</string>
 </resources>
