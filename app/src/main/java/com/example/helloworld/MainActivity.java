@@ -2,7 +2,6 @@ package com.example.helloworld;
 /*
 android built in regex for validation for emails.
 have it display the age in a text view.
-
  */
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         nameInput = findViewById(R.id.nameTextEdit);
         userNameInput = findViewById(R.id.UserNameTextEdit);
