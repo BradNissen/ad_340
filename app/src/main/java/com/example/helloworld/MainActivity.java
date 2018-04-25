@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private int month_x, day_x, year_x;
     private Button errorButton;
     private TextView mDisplayDate;
+    private boolean userClicked;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
 
@@ -80,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 date = month + "/" + day + "/" + year;
                 if (is18(month, day, year)){
                     mDisplayDate.setText(date +"\n");
-                         if ((nameInput != null) && (userNameInput != null) && (emailInput != null))
+                         if ((nameInput != null) && (userNameInput != null) && (emailInput != null)) {
                              errorButton.setText("Submit");
+                             userClicked = true;
+                         }
+
                 }
                 else {
                     mDisplayDate.setText(date +"\n");
@@ -105,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                     ")+"
     );
-
-
 
     public static int getAge(Date dateOfBirth) {
 
@@ -138,10 +140,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
     public boolean is18(int MM, int DD, int YYYY){
         int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
@@ -167,13 +165,10 @@ public class MainActivity extends AppCompatActivity {
         int numErrors = 0;
         Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 
-
         Calendar birthday = Calendar.getInstance();
         birthday.set(year_x, month_x, day_x);
         int age = getAge(birthday.getTime());
         String ageString = String.valueOf(age);
-
-
 
 
         if (isValid(nameInput)){
@@ -200,12 +195,8 @@ public class MainActivity extends AppCompatActivity {
             errMsg.append("email input error").append("\n");
         }
 
-
-        if (is18(month_x, day_x, year_x) && ageString.length()>1) {
-
-
+        if (is18(month_x, day_x, year_x) && userClicked ) {
             intent.putExtra(Constants.KEY_AGE, ageString);
-
             intent.putExtra(Constants.KEY_DOB, month_x + "/" + day_x + "/" + year_x);
         } else {
             numErrors += 1;
