@@ -110,6 +110,13 @@ public class SecondActivity extends AppCompatActivity {
         outState.putString(Constants.KEY_DESC, descriptionDisplay.getText().toString());
     }
 
+    @Override
+    public void onBackPressed() {
+        // defer to system default behavior.
+        super.onBackPressed();
+        Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
 //    @Override
 //    protected void onRestart() {
@@ -146,4 +153,5 @@ public class SecondActivity extends AppCompatActivity {
         super.onDestroy();
         Log.i(TAG, "onDestroy()");
     }
+
 }
