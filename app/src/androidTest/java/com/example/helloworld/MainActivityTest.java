@@ -56,6 +56,8 @@ public class MainActivityTest {
         onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
         // rotate the screen before
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         onView(withId(R.id.goBackButton)).perform(ViewActions.scrollTo());
         onView(withId(R.id.goBackButton)).perform(click());
@@ -74,6 +76,31 @@ public class MainActivityTest {
 
         // rotate the screen before
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
+        onView(withId(R.id.SubmitButton)).perform(click());
+    }
+
+    @Test
+    public void birthdayIsToday() {
+        onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
+        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
+        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        Espresso.closeSoftKeyboard();
+        setDate(R.id.dateTextView, 2000, 4, 26);
+
+        // rotate the screen before
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
 
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
