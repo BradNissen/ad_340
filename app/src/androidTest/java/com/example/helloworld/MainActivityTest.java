@@ -119,17 +119,18 @@ public class MainActivityTest {
 
     @Test
     public void inputSubmitError(){
-        //onView(withId(R.id.nameTextEdit)).perform(typeText(""));
-        //onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
-        //onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
-        //onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
-        //onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
-        //onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
         //onView(withId(R.id.SubmitButton)).check(matches(withText("name input error\nusername input error\nemail input error\nbirthday input error\nlocation input error\n")));
     }
-
+    @Test
+    public void inputSubmitErrors(){
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+        //onView(withId(R.id.SubmitButton)).check(matches(withText("name input error\nusername input error\nemail input error\nbirthday input error\nlocation input error\n")));
+    }
 //    @Test
 //    public void inputSubmitErrors(){
 //        //onView(withId(R.id.nameTextEdit)).perform(typeText(""));
