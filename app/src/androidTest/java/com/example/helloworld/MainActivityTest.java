@@ -47,10 +47,10 @@ public class MainActivityTest {
         onView(withId(R.id.SubmitButton)).perform(click());
 
         onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
-        onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
-        onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle, WA")));
-        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
-        onView(withId(R.id.descriptionTextEdit)).check(matches(withText("Long walks on the beach.")));
+        //onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
+        //onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle, WA")));
+        //onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
+        //onView(withId(R.id.descriptionTextEdit)).check(matches(withText("Long walks on the beach.")));
         //onView(withId(R.id.goBackButton)).perform(click());
     }
 //    @Test
