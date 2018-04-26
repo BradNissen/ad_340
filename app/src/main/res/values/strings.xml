@@ -7,9 +7,9 @@
     <string name="personal_info">Nissen, Brad 04–16–2018</string>
     <string name="submitText">Please Fill Out Form</string>
     <string name="openDialogText">Tap here to --> Select Birthday</string>
-    <string name="name_input">Enter Name…</string>
-    <string name="user_name_input">Enter User Name…</string>
-    <string name="email_input">Enter Email Address…</string>
+    <string name="name_input">Enter your name…</string>
+    <string name="user_name_input">Choose a username...</string>
+    <string name="email_input">ex: name@email.com</string>
     <string name="helloTEST">HELLO</string>
     <string name="back_button">Go Back</string>
     <string name="age_printer">if you didnt know... You\'re</string>

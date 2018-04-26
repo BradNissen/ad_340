@@ -6,5 +6,9 @@ public class Constants {
     static final String KEY_EMAIL = "email";
     static final String KEY_DOB = "DOB";
     static final String KEY_AGE = "age";
+
+    static final String KEY_LOCATION = "location";
+    static final String KEY_JOB = "job";
+    static final String KEY_DESC = "description";
 }
 

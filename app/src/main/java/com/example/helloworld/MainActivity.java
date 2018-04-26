@@ -28,9 +28,15 @@ import java.util.regex.Pattern;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+
     private EditText nameInput;
     private EditText userNameInput;
     private EditText emailInput;
+    private EditText locationInput;
+    private EditText jobInput;
+    private EditText decsriptionInput;
+
+
     private String date;
     private int month_x, day_x, year_x;
     private Button errorButton;
@@ -44,9 +50,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //get user fields
         nameInput = findViewById(R.id.nameTextEdit);
         userNameInput = findViewById(R.id.UserNameTextEdit);
         emailInput = findViewById(R.id.EmailTextEdit);
+        locationInput= findViewById(R.id.locationTextEdit);
+        jobInput = findViewById(R.id.jobTextEdit);
+        decsriptionInput = findViewById(R.id.descriptionTextEdit);
+
         mDisplayDate = findViewById(R.id.dateTextView);
         errorButton = findViewById(R.id.SubmitButton);
 
@@ -171,6 +182,10 @@ public class MainActivity extends AppCompatActivity {
         String ageString = String.valueOf(age);
 
 
+
+
+
+        //NAME
         if (isValid(nameInput)){
             intent.putExtra(Constants.KEY_NAME, nameInput.getText().toString());
 
@@ -180,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //USERNAME
         if (isValid(userNameInput)) {
             intent.putExtra(Constants.KEY_USER_NAME, userNameInput.getText().toString());
         } else {
@@ -188,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //EMAIL
         if (checkEmail(emailInput.getText().toString())) {
             intent.putExtra(Constants.KEY_EMAIL, emailInput.getText().toString());
         } else {
@@ -195,13 +212,44 @@ public class MainActivity extends AppCompatActivity {
             errMsg.append("email input error").append("\n");
         }
 
+        //BIRTHDAY
         if (is18(month_x, day_x, year_x) && userClicked ) {
             intent.putExtra(Constants.KEY_AGE, ageString);
             intent.putExtra(Constants.KEY_DOB, month_x + "/" + day_x + "/" + year_x);
         } else {
             numErrors += 1;
-            errMsg.append("birthday input error");
+            errMsg.append("birthday input error").append("\n");
         }
+
+
+
+        //LOCATION
+        if (isValid(locationInput)) {
+            intent.putExtra(Constants.KEY_LOCATION, locationInput.getText().toString());
+        } else {
+            numErrors += 1;
+            errMsg.append("location input error").append("\n");
+        }
+
+
+        //JOB
+        if (isValid(jobInput)) {
+            intent.putExtra(Constants.KEY_JOB, jobInput.getText().toString());
+        } else {
+            numErrors += 1;
+            errMsg.append("job input error").append("\n");
+        }
+
+
+        //DESCRIPTION
+        if (isValid(decsriptionInput)) {
+            intent.putExtra(Constants.KEY_DESC, decsriptionInput.getText().toString());
+        } else {
+            numErrors += 1;
+            errMsg.append("description input error").append("\n");
+        }
+
+
 
         // if there are no errors to display, then begin the activity.
         if (numErrors == 0) {
@@ -212,14 +260,13 @@ public class MainActivity extends AppCompatActivity {
             errorButton.setText(errMsg.toString());
         }
 
-
     }
 
     public boolean isValid(EditText input) {
 
         String name = input.getText().toString();
         int num = name.length();
-        //obviously this is the best solution, if a user enters " " it accepts that as input.
+        //obviously this isn't the best solution, if a user enters " " it accepts that as input.
         if (num >= 1){
             return true;
         }
@@ -257,6 +304,18 @@ public class MainActivity extends AppCompatActivity {
             emailInput.setText((String) savedInstanceState.get(Constants.KEY_EMAIL));
         }
 
+        if (savedInstanceState.containsKey(Constants.KEY_LOCATION)) {
+            locationInput.setText((String) savedInstanceState.get(Constants.KEY_LOCATION));
+        }
+
+        if (savedInstanceState.containsKey(Constants.KEY_JOB)) {
+            jobInput.setText((String) savedInstanceState.get(Constants.KEY_JOB));
+        }
+
+        if (savedInstanceState.containsKey(Constants.KEY_DESC)) {
+            decsriptionInput.setText((String) savedInstanceState.get(Constants.KEY_DESC));
+        }
+
         if (savedInstanceState.containsKey(Constants.KEY_DOB)) {
             mDisplayDate.setText((String) savedInstanceState.get(Constants.KEY_DOB));
         }
@@ -270,6 +329,9 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(Constants.KEY_NAME, nameInput.getText().toString());
         outState.putString(Constants.KEY_USER_NAME, userNameInput.getText().toString());
         outState.putString(Constants.KEY_EMAIL, emailInput.getText().toString());
+        outState.putString(Constants.KEY_LOCATION, locationInput.getText().toString());
+        outState.putString(Constants.KEY_JOB, jobInput.getText().toString());
+        outState.putString(Constants.KEY_DESC, decsriptionInput.getText().toString());
         outState.putString(Constants.KEY_DOB, mDisplayDate.getText().toString());
     }
 

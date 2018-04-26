@@ -1,10 +1,12 @@
 package com.example.helloworld;
 
+import android.app.AlertDialog;
 import android.content.pm.ActivityInfo;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.v7.widget.AlertDialogLayout;
 import android.widget.DatePicker;
 
 import org.hamcrest.Matchers;
@@ -16,6 +18,9 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
+import static android.support.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -30,22 +35,22 @@ public class MainActivityTest {
     @Test
     public void validInputTest() {
 
-        // Test the name field.
         onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
-
-        // Test the username field.
         onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
-
-        // Test the email field.
         onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
-
-        setDate(R.id.dateTextView, 1990, 8, 13);
-
+        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle, WA"));
+        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks on the beach."));
         Espresso.closeSoftKeyboard();
-
+        setDate(R.id.dateTextView, 1990, 8, 13);
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
+        onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
+        onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
 
-       //onView(withId(R.id.messageTextView)).check(matches(withText("Thanks for signing up, Brad!\n\nYou're 27 years old")));
+
+
+
 
     }
 //    @Test

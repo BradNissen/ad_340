@@ -9,78 +9,162 @@
     android:background="@color/colorMain">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="NAME:"/>
     <EditText
         android:id="@+id/nameTextEdit"
         android:layout_width="match_parent"
         android:hint="@string/name_input"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:inputType="text"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:textSize="18sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="14sp"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="USERNAME:"/>
     <EditText
         android:id="@+id/UserNameTextEdit"
         android:layout_width="match_parent"
         android:hint="@string/user_name_input"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:layout_marginBottom="30dp"
         android:inputType="text"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:textSize="18sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="14sp"
         />
 
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="EMAIL:"/>
     <EditText
         android:id="@+id/EmailTextEdit"
         android:layout_width="match_parent"
         android:hint="@string/email_input"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:layout_marginBottom="30dp"
         android:inputType="textEmailAddress"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:textSize="18sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="14sp"
         />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="LOCATION:"/>
+    <EditText
+        android:id="@+id/locationTextEdit"
+        android:layout_width="match_parent"
+        android:hint="Where are you from?"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:inputType="text"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="14sp"
+        />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="OCCUPATION:"/>
+    <EditText
+        android:id="@+id/jobTextEdit"
+        android:layout_width="match_parent"
+        android:hint="Whats your job?"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:inputType="text"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="14sp"
+        />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:text="DESCRIPTION:"/>
+    <EditText
+        android:id="@+id/descriptionTextEdit"
+        android:layout_width="match_parent"
+        android:hint="What do you like?..."
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="30dp"
+        android:inputType="text"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:textSize="14sp"
+        />
+
+
+
 
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
         android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:text="@string/openDialogText"
-        android:layout_marginBottom="30dp"
-        android:textSize="22sp"
         android:textAlignment="center"
-        />
+        android:textSize="22sp" />
+
+
 
     <Button
         android:id="@+id/SubmitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:fontFamily="monospace"
-        android:paddingBottom="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:textSize="18sp"
-        android:text="@string/submitText"
-        android:layout_marginTop="150dp"
         android:layout_marginBottom="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:clickable="true"
+        android:fontFamily="monospace"
         android:onClick="goToSecondActivity"
-        />
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:text="@string/submitText"
+        android:textSize="18sp" />
+
+
+
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_marginBottom="5dp"
         android:fontFamily="monospace"
         android:text="@string/personal_info"
