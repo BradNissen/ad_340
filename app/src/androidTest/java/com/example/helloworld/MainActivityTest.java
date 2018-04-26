@@ -54,11 +54,15 @@ public class MainActivityTest {
         onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle")));
         onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
         onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
+        // rotate the screen before
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        onView(withId(R.id.goBackButton)).perform(ViewActions.scrollTo());
+        onView(withId(R.id.goBackButton)).perform(click());
 
     }
     @Test
     public void rotatingSumbitwithValid() {
-
         onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
         onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
@@ -74,6 +78,39 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
+    }
+
+    @Test
+    public void inputSubmitErrors(){
+        onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
+        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
+        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+        onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
+    }
+
+    @Test
+    public void invalidBirthday() {
+        onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
+        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
+        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        Espresso.closeSoftKeyboard();
+        setDate(R.id.dateTextView, 2001, 8, 13);
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+        onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
+
+    }
+
+    @Test
+    public void flipOnSecondActivity() {
 
     }
 
