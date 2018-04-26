@@ -38,20 +38,20 @@ public class MainActivityTest {
         onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
         onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
-        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle, WA"));
+        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
         onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
-        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks on the beach."));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
 
         onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
-        //onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
-        //onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle, WA")));
-        //onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
-        //onView(withId(R.id.descriptionTextEdit)).check(matches(withText("Long walks on the beach.")));
-        //onView(withId(R.id.goBackButton)).perform(click());
+        onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
+        onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle")));
+        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
+        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
+
     }
 //    @Test
 //    public void validInputTestWithRotateBeforeSubmitting() {
