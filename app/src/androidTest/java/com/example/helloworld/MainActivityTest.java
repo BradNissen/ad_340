@@ -54,8 +54,14 @@ public class MainActivityTest {
         onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle")));
         onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
         onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
+
         // rotate the screen before
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
+        onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
+        onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle")));
+        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
+        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
         onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
@@ -63,11 +69,6 @@ public class MainActivityTest {
         onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
         onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
-        onView(withId(R.id.ageDisplayTextView)).check(matches(withText("27")));
-        onView(withId(R.id.locationDisplayTextView)).check(matches(withText("Seattle")));
-        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText("Server")));
-        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText("Long walks")));
 
         onView(withId(R.id.goBackButton)).perform(ViewActions.scrollTo());
         onView(withId(R.id.goBackButton)).perform(click());
@@ -88,7 +89,6 @@ public class MainActivityTest {
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
 
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());

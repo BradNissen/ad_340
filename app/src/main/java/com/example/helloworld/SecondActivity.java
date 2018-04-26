@@ -74,27 +74,27 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        Log.i(TAG, "onRestoreInstanceState()");
-        if (savedInstanceState.containsKey(Constants.KEY_NAME)) {
-            nameDisplay.setText((String)savedInstanceState.get(Constants.KEY_NAME));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_AGE)) {
-            ageDisplay.setText((String) savedInstanceState.get(Constants.KEY_AGE));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_LOCATION)) {
-            locationDisplay.setText((String) savedInstanceState.get(Constants.KEY_LOCATION));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_JOB)) {
-            jobDisplay.setText((String) savedInstanceState.get(Constants.KEY_JOB));
-        }
-        if (savedInstanceState.containsKey(Constants.KEY_DESC)) {
-            descriptionDisplay.setText((String) savedInstanceState.get(Constants.KEY_DESC));
-        }
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//
+//        Log.i(TAG, "onRestoreInstanceState()");
+//        if (savedInstanceState.containsKey(Constants.KEY_NAME)) {
+//            nameDisplay.setText((String)savedInstanceState.get(Constants.KEY_NAME));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_AGE)) {
+//            ageDisplay.setText((String) savedInstanceState.get(Constants.KEY_AGE));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_LOCATION)) {
+//            locationDisplay.setText((String) savedInstanceState.get(Constants.KEY_LOCATION));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_JOB)) {
+//            jobDisplay.setText((String) savedInstanceState.get(Constants.KEY_JOB));
+//        }
+//        if (savedInstanceState.containsKey(Constants.KEY_DESC)) {
+//            descriptionDisplay.setText((String) savedInstanceState.get(Constants.KEY_DESC));
+//        }
+//    }
 
 
 
