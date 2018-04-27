@@ -117,12 +117,13 @@ public class SecondActivity extends AppCompatActivity {
 //        Intent intent = new Intent(SecondActivity.this, MainActivity.class);
 //        startActivity(intent);
 //    }
+    
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i(TAG, "onRestart()");
-    }
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.i(TAG, "onRestart()");
+//    }
 
     @Override
     protected void onStart() {
