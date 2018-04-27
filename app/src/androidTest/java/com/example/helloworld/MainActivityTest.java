@@ -118,14 +118,15 @@ public class MainActivityTest {
         onView(withId(R.id.SubmitButton)).perform(click());
     }
 
-//    @Test
-//    public void inputSubmitError(){
-//
-//        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.SubmitButton)).perform(click());
-//
-//    }
+    @Test
+    public void inputSubmitError(){
+
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+
+    }
+
     @Test
     public void inputSubmitErrors(){
         onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
