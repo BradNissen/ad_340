@@ -93,14 +93,14 @@ public class MainActivity extends AppCompatActivity {
                 if (is18(month, day, year)){
                     mDisplayDate.setText(date +"\n");
                          if ((nameInput != null) && (userNameInput != null) && (emailInput != null)) {
-                             errorButton.setText(R.string.submit);
+                             errorButton.setText("Submit");
                              userClicked = true;
                          }
 
                 }
                 else {
                     mDisplayDate.setText(date +"\n");
-                    errorButton.setText(R.string.limit_18);
+                    errorButton.setText("You must be 18 yrs. old.");
                 }
             }
         };
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.name_input_error)).append("\n");
+            errMsg.append("name input error").append("\n");
         }
 
 
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_USER_NAME, userNameInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.username_input_error)).append("\n");
+            errMsg.append("username input error").append("\n");
         }
 
 
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_EMAIL, emailInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.email_input_error)).append("\n");
+            errMsg.append("email input error").append("\n");
         }
 
         //BIRTHDAY
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_DOB, month_x + "/" + day_x + "/" + year_x);
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.birthday_input_error)).append("\n");
+            errMsg.append("birthday input error").append("\n");
         }
 
 
@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_LOCATION, locationInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.location_input_error)).append("\n");
+            errMsg.append("location input error").append("\n");
         }
 
 
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_JOB, jobInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.job_input_error)).append("\n");
+            errMsg.append("job input error").append("\n");
         }
 
 
@@ -246,14 +246,14 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constants.KEY_DESC, decsriptionInput.getText().toString());
         } else {
             numErrors += 1;
-            errMsg.append(getString(R.string.description_input_error)).append("\n");
+            errMsg.append("description input error").append("\n");
         }
 
 
 
         // if there are no errors to display, then begin the activity.
         if (numErrors == 0) {
-            errorButton.setText(R.string.submit);
+            errorButton.setText("Submit");
             startActivity(intent);
 
         } else {
@@ -275,19 +275,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Make this a method to perform and cler fields.
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        nameInput.setText("");
-        userNameInput.setText("");
-        emailInput.setText("");
-        locationInput.setText("");
-        jobInput.setText("");
-        decsriptionInput.setText("");
-        mDisplayDate.setText(R.string.openDialogText);
-        Log.i(TAG, "onRestart()");
-    }
+//    //Make this a method to perform and cler fields.
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        nameInput.setText("");
+//        userNameInput.setText("");
+//        emailInput.setText("");
+//        locationInput.setText("");
+//        jobInput.setText("");
+//        decsriptionInput.setText("");
+//        mDisplayDate.setText(R.string.openDialogText);
+//        Log.i(TAG, "onRestart()");
+//    }
 
     @Override
     protected void onStart() {
