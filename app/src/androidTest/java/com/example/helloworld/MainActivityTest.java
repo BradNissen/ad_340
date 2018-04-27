@@ -10,6 +10,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.AlertDialogLayout;
 import android.widget.DatePicker;
+import android.widget.ScrollView;
 
 import org.hamcrest.Matchers;
 import org.junit.Rule;
@@ -117,13 +118,14 @@ public class MainActivityTest {
         onView(withId(R.id.SubmitButton)).perform(click());
     }
 
-    @Test
-    public void inputSubmitError(){
-        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
-        Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SubmitButton)).perform(click());
-
-    }
+//    @Test
+//    public void inputSubmitError(){
+//
+//        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+//        Espresso.closeSoftKeyboard();
+//        onView(withId(R.id.SubmitButton)).perform(click());
+//
+//    }
     @Test
     public void inputSubmitErrors(){
         onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
