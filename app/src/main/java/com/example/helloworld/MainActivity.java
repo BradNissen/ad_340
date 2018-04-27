@@ -275,19 +275,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    //Make this a method to perform and cler fields.
-//    @Override
-//    protected void onRestart() {
-//        super.onRestart();
-//        nameInput.setText("");
-//        userNameInput.setText("");
-//        emailInput.setText("");
-//        locationInput.setText("");
-//        jobInput.setText("");
-//        decsriptionInput.setText("");
-//        mDisplayDate.setText(R.string.openDialogText);
-//        Log.i(TAG, "onRestart()");
-//    }
+    //Make this a method to perform and cler fields.
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        nameInput.setText("");
+        userNameInput.setText("");
+        emailInput.setText("");
+        locationInput.setText("");
+        jobInput.setText("");
+        decsriptionInput.setText("");
+        mDisplayDate.setText(R.string.openDialogText);
+        Log.i(TAG, "onRestart()");
+    }
 
     @Override
     protected void onStart() {
@@ -342,7 +342,6 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(Constants.KEY_DESC, decsriptionInput.getText().toString());
         outState.putString(Constants.KEY_DOB, mDisplayDate.getText().toString());
     }
-
 
     @Override
     protected void onResume() {
