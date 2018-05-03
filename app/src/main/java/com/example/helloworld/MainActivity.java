@@ -174,14 +174,12 @@ public class MainActivity extends AppCompatActivity {
 
         StringBuilder errMsg = new StringBuilder();
         int numErrors = 0;
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        Intent intent = new Intent(MainActivity.this, Tabs_Activity.class);
 
         Calendar birthday = Calendar.getInstance();
         birthday.set(year_x, month_x, day_x);
         int age = getAge(birthday.getTime());
         String ageString = String.valueOf(age);
-
-
 
 
 
