@@ -2,6 +2,7 @@ package com.example.helloworld;
 
 import android.content.pm.ActivityInfo;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.rule.ActivityTestRule;
@@ -56,12 +57,12 @@ public class MainActivityTest {
     //PASSED
     @Test
     public void rotatingSumbitwithValid() {
-        onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
-        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
-        onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
-        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
-        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
-        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
 
@@ -133,6 +134,46 @@ public class MainActivityTest {
         onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
 
     }
+
+    //PASSED
+    @Test
+    public void checkDataOnNextActivity() {
+
+        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
+        Espresso.closeSoftKeyboard();
+        setDate(R.id.dateTextView, 1990, 8, 13);
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+
+        Espresso.onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
+        Espresso.onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
+        Espresso.onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
+        Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
+        Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
+    }
+    @Test
+    public void clickTabs(){
+        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
+        Espresso.closeSoftKeyboard();
+        setDate(R.id.dateTextView, 1990, 8, 13);
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+
+
+
+
+    }
+
 
     public static void setDate(int datePickerLaunchViewId, int year, int monthOfYear, int dayOfMonth) {
         onView(withId(datePickerLaunchViewId)).perform(click());
