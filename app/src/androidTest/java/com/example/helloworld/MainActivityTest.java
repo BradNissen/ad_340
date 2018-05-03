@@ -16,16 +16,19 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
-
-    String name = "brad";
+    //String name = "brad";
+    String name = Constants.KEY_NAME; // the constant is set to "name" but I think its fine for a test
     String age = "27";
     String username = "brad123";
     String email = "bradanissen@gmail.com";
@@ -40,6 +43,8 @@ public class MainActivityTest {
     //PASSED
     @Test
     public void validInputTest() {
+        //try out constants.
+
 
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
@@ -150,12 +155,15 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
 
-        Espresso.onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
+        Espresso.onView(withId(R.id.nameDisplayTextView)).check(matches(isDisplayed()));
         Espresso.onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
         Espresso.onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
         Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
         Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
     }
+
+
+    //PASSED
     @Test
     public void clickTabs(){
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
@@ -169,7 +177,13 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
 
+        onView(withId(R.id.container)).perform(swipeLeft());
 
+        onView(withId(R.id.matches)).check(matches(withText("Matches")));
+
+        onView(withId(R.id.container)).perform(swipeLeft());
+
+        onView(withId(R.id.settings)).check(matches(withText("Settings")));
 
 
     }
