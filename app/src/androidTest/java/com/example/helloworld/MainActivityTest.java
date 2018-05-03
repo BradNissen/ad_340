@@ -2,6 +2,7 @@ package com.example.helloworld;
 
 import android.content.pm.ActivityInfo;
 import android.support.test.espresso.Espresso;
+import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -35,6 +36,7 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityTestRule
             = new ActivityTestRule<>(MainActivity.class);
 
+    //PASSED
     @Test
     public void validInputTest() {
 
@@ -47,52 +49,34 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SubmitButton)).perform(click());//
-
-//        onView(withId(R.layout.tab1_fragment)).check(withId(R.id.nameDisplayTextView));
-//        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
-//        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
-//        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
-//        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
-//
-//        // rotate the screen before
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        onView(withId(R.id.nameDisplayTextView)).check(matches(withText(name)));
-//        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
-//        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
-//        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
-//        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        onView(withId(R.id.nameDisplayTextView)).check(matches(withText("Brad")));
-//        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
-//        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
-//        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
-//        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+        onView(withId(R.id.SubmitButton)).perform(click());
+        Espresso.pressBack();
     }
-//    @Test
-//    public void rotatingSumbitwithValid() {
-//        onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
-//        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
-//        onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
-//        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
-//        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
-//        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
-//        Espresso.closeSoftKeyboard();
-//        setDate(R.id.dateTextView, 1990, 8, 13);
-//
-//        // rotate the screen before
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
-//        onView(withId(R.id.SubmitButton)).perform(click());
-//    }
-//
-//    @Test
+
+    //PASSED
+    @Test
+    public void rotatingSumbitwithValid() {
+        onView(withId(R.id.nameTextEdit)).perform(typeText("brad"));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText("brad123"));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText("bradanissen@gmail.com"));
+        onView(withId(R.id.locationTextEdit)).perform(typeText("Seattle"));
+        onView(withId(R.id.jobTextEdit)).perform(typeText("Server"));
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText("Long walks"));
+        Espresso.closeSoftKeyboard();
+        setDate(R.id.dateTextView, 1990, 8, 13);
+
+        // rotate the screen before
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
+        onView(withId(R.id.SubmitButton)).perform(click());
+    }
+
+    //PASSED
+    @Test
     public void birthdayIsToday() {
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
@@ -101,11 +85,17 @@ public class MainActivityTest {
         onView(withId(R.id.jobTextEdit)).perform(typeText(job));
         onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
         Espresso.closeSoftKeyboard();
-        setDate(R.id.dateTextView, 2000, 5, 3);
+        setDate(R.id.dateTextView, 2000, 05, 03);
+
+//        // rotate the screen before
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
     }
 
+    //PASSED
     @Test
     public void inputSubmitError1(){
         onView(withId(R.id.locationTextEdit)).perform(typeText(city));
@@ -116,6 +106,7 @@ public class MainActivityTest {
 
     }
 
+    //PASSED
     @Test
     public void inputSubmitError2(){
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
@@ -123,32 +114,17 @@ public class MainActivityTest {
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(click());
-
-    }
-    public void dontExistTest() {
-        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
-        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
-        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
-        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
-        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
-        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
-        Espresso.closeSoftKeyboard();
-        setDate(R.id.dateTextView, 2000, 5, 3);
-        Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SubmitButton)).perform(click());
     }
 
-
+    //PASSED
     @Test
     public void invalidBirthday() {
-
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
         onView(withId(R.id.locationTextEdit)).perform(typeText(city));
         onView(withId(R.id.jobTextEdit)).perform(typeText(job));
         onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
-
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 2005, 1, 1);
         Espresso.closeSoftKeyboard();
@@ -157,13 +133,6 @@ public class MainActivityTest {
         onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
 
     }
-//
-//    @Test
-//    public void flipOnSecondActivity() {
-//
-//    }
-//
-
 
     public static void setDate(int datePickerLaunchViewId, int year, int monthOfYear, int dayOfMonth) {
         onView(withId(datePickerLaunchViewId)).perform(click());
