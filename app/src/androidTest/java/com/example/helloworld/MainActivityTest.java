@@ -47,8 +47,7 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SubmitButton)).perform(click());
-
+        onView(withId(R.id.SubmitButton)).perform(click());//
 
 //        onView(withId(R.layout.tab1_fragment)).check(withId(R.id.nameDisplayTextView));
 //        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
