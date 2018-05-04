@@ -47,30 +47,47 @@ public class Tab1Fragment extends Fragment {
         Bundle b = intent.getExtras();
         Log.i(TAG, "intent");
 
+
         //then fill the fields
-        assert b != null;
-        if (b.containsKey(Constants.KEY_NAME)){
-            String name = b.getString(Constants.KEY_NAME);
-            String lowerCaseName = name.toLowerCase();
-            String properName = lowerCaseName.substring(0, 1).toUpperCase() + lowerCaseName.substring(1);
-            nameFragDisplay.setText(properName);
-        }
-        if (b.containsKey(Constants.KEY_AGE)){
-            String str = b.getString(Constants.KEY_AGE);
-            ageFragDisplay.setText(str);
-        }
-        if (b.containsKey(Constants.KEY_LOCATION)){
-            String str = b.getString(Constants.KEY_LOCATION);
-            locationFragDisplay.setText(str);
-        }
-        if (b.containsKey(Constants.KEY_JOB)){
-            String str = b.getString(Constants.KEY_JOB);
-            jobFragDisplay.setText(str);
-        }
-        if (b.containsKey(Constants.KEY_DESC)){
-            String str = b.getString(Constants.KEY_DESC);
-            descriptionFragDisplay.setText(str);
-        }
+//        assert b != null;
+//        if (b.containsKey(Constants.KEY_NAME)){
+//            String name = b.getString(Constants.KEY_NAME);
+//            String lowerCaseName = name.toLowerCase();
+//            String properName = lowerCaseName.substring(0, 1).toUpperCase() + lowerCaseName.substring(1);
+//            nameFragDisplay.setText(properName);
+//        }
+//        if (b.containsKey(Constants.KEY_AGE)){
+//            String str = b.getString(Constants.KEY_AGE);
+//            ageFragDisplay.setText(str);
+//        }
+//        if (b.containsKey(Constants.KEY_LOCATION)){
+//            String str = b.getString(Constants.KEY_LOCATION);
+//            locationFragDisplay.setText(str);
+//        }
+//        if (b.containsKey(Constants.KEY_JOB)){
+//            String str = b.getString(Constants.KEY_JOB);
+//            jobFragDisplay.setText(str);
+//        }
+//        if (b.containsKey(Constants.KEY_DESC)){
+//            String str = b.getString(Constants.KEY_DESC);
+//            descriptionFragDisplay.setText(str);
+//        }
+        String name = b.getString(Constants.KEY_NAME);
+        String lowerCaseName = name.toLowerCase();
+        String properName = lowerCaseName.substring(0, 1).toUpperCase() + lowerCaseName.substring(1);
+        nameFragDisplay.setText(properName);
+
+        String age = b.getString(Constants.KEY_AGE);
+        ageFragDisplay.setText(age);
+
+        String loc = b.getString(Constants.KEY_LOCATION);
+        locationFragDisplay.setText(loc);
+
+        String job = b.getString(Constants.KEY_JOB);
+        jobFragDisplay.setText(job);
+
+        String desc = b.getString(Constants.KEY_DESC);
+        descriptionFragDisplay.setText(desc);
 
         return view;
     }

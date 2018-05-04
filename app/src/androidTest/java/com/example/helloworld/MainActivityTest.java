@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.action.ViewActions.typeText;
@@ -55,6 +56,8 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
         Espresso.pressBack();
     }
@@ -161,7 +164,7 @@ public class MainActivityTest {
         Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
         Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
     }
-
+    
 
     //PASSED
     @Test
