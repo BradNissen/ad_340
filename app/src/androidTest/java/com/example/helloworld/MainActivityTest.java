@@ -164,7 +164,7 @@ public class MainActivityTest {
         Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
         Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
     }
-    
+
 
     //PASSED
     @Test
