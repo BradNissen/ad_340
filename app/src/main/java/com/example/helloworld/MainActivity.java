@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
             errMsg.append("email input error").append("\n");
         }
 
+
         //BIRTHDAY
         if (is18(month_x, day_x, year_x) && userClicked ) {
             intent.putExtra(Constants.KEY_AGE, ageString);
@@ -218,7 +219,6 @@ public class MainActivity extends AppCompatActivity {
             numErrors += 1;
             errMsg.append("birthday input error").append("\n");
         }
-
 
 
         //LOCATION

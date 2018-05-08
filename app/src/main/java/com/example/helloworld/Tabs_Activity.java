@@ -1,8 +1,10 @@
 package com.example.helloworld;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Tabs_Activity extends AppCompatActivity {
 
@@ -25,49 +31,53 @@ public class Tabs_Activity extends AppCompatActivity {
         setContentView(R.layout.tabs_activity);
         Log.d(TAG, "onCreate: Starting");
 
-        //get the current page? or Manager?
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+        // Adding Toolbar to Main screen
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
+        // Setting ViewPager for each Tabs
+        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
+        setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-
+        // Set Tabs inside Toolbar
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
     }
-
+    // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
-        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Tab1Fragment(), "PROFILE");
-        adapter.addFragment(new Tab2Fragment(), "MATCHES");
-        adapter.addFragment(new Tab3Fragment(), "SETTINGS");
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new ProfileFragment(), "Profile");
+        adapter.addFragment(new MatchesFragment(), "Matches");
+        adapter.addFragment(new SettingsFragment(), "Settings");
         viewPager.setAdapter(adapter);
     }
-    @Override
-    protected void onResume() {
 
-        super.onResume();
-        Log.i(TAG, "onResume()");
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
-
-    @Override
-    protected void onPause() {
-
-        super.onPause();
-        Log.i(TAG, "onPause()");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
-    }
-
 }

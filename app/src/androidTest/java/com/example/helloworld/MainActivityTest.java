@@ -44,8 +44,6 @@ public class MainActivityTest {
     //PASSED
     @Test
     public void validInputTest() {
-        //try out constants.
-
 
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
