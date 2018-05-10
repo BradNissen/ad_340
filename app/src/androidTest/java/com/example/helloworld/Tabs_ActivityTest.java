@@ -78,7 +78,7 @@ public class Tabs_ActivityTest {
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-//
+
 //    @Test
 //    public void swipeTabsTest(){
 //        onView(withId(R.id.container)).perform(swipeLeft());
@@ -96,17 +96,4 @@ public class Tabs_ActivityTest {
 //
 //    }
 
-
-    /**
-     * method to set my fields when the app is created
-     */
-    public Intent setFields(String name, String age, String location, String job, String desc){
-        Intent intent = new Intent();
-        intent.putExtra(Constants.KEY_NAME, name);
-        intent.putExtra(Constants.KEY_AGE, age);
-        intent.putExtra(Constants.KEY_LOCATION, location);
-        intent.putExtra(Constants.KEY_JOB, job);
-        intent.putExtra(Constants.KEY_DESC, desc);
-        return intent;
-    }
 }
