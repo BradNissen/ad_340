@@ -74,6 +74,8 @@ public class Tabs_ActivityTest {
         Espresso.onView(withId(R.id.locationDisplayTextView)).check(matches(withText(location)));
         Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
         Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
+
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Test
@@ -88,9 +90,9 @@ public class Tabs_ActivityTest {
 //        onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions
 //                .actionOnItem(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button))), click()));
 
-//        onView(ViewMatchers.withId(R.id.my_recycler_view))
-//                .perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
-//
+        onView(ViewMatchers.withId(R.id.my_recycler_view))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(7, ViewActions.click()));
+
     }
 
 
