@@ -55,9 +55,10 @@ public class MainActivityTest {
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
-        Espresso.pressBack();
+        //Espresso.pressBack();
     }
 
     //PASSED
