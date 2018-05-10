@@ -11,13 +11,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Provides UI for the view with Cards.
  */
 public class MatchesFragment extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,18 +30,47 @@ public class MatchesFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         return recyclerView;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         public ImageView picture;
         public TextView name;
         public TextView description;
+        ImageButton favButton;
+        TextView favDisplay;
+        Boolean like = false;
+
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
+
             super(inflater.inflate(R.layout.matches_fragment, parent, false));
+
             picture = (ImageView) itemView.findViewById(R.id.card_image);
             name = (TextView) itemView.findViewById(R.id.card_title);
             description = (TextView) itemView.findViewById(R.id.card_text);
+            favButton = itemView.findViewById(R.id.favorite_button);
+            favDisplay = itemView.findViewById(R.id.favorite_display);
+
+            //set the click listener for each button on the itemView
+            favButton.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    if (!like) {
+                        like = true;
+                        //Toast.makeText(getApplicationContext(), "Your toast message.", Toast.LENGTH_SHORT).show(); //display in long period of time
+                        Toast.makeText(itemView.getContext(), "You like " + name.getText().toString(), Toast.LENGTH_SHORT).show();
+                        favDisplay.setText("Liked");
+                    } else {
+                        like = false;
+                        Toast.makeText(itemView.getContext(), "You don't like " + name.getText().toString(), Toast.LENGTH_SHORT).show();
+                        favDisplay.setText("");
+                        }
+                }
+
+            });
         }
     }
     /**
@@ -46,7 +78,7 @@ public class MatchesFragment extends Fragment {
      */
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 18;
+        private static final int LENGTH = 8;
         private final String[] mPlaces;
         private final String[] mPlaceDesc;
         private final Drawable[] mPlacePictures;
