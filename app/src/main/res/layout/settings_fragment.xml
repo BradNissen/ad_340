@@ -5,26 +5,35 @@
     android:background="?android:attr/selectableItemBackground"
     android:padding="@dimen/tile_padding">
 
-    <ImageView
-        android:id="@+id/tile_picture"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tile_height"
-        android:scaleType="centerCrop"
-        tools:src="@drawable/a" />
+    <!--<ImageView-->
+        <!--android:id="@+id/tile_picture"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/tile_height"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--tools:src="@drawable/a" />-->
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tile_height"
-        android:alpha="0.3"
-        android:background="@color/dark_grey" />
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/tile_height"-->
+        <!--android:alpha="0.3"-->
+        <!--android:background="@color/dark_grey" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tile_title"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/tile_height"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--tools:text="@string/item_title"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="@dimen/article_titles" />-->
+
 
     <TextView
-        android:id="@+id/tile_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tile_height"
-        android:layout_gravity="center"
-        android:gravity="center"
-        tools:text="@string/item_title"
-        android:textColor="@color/white"
-        android:textSize="@dimen/article_titles" />
+        android:layout_height="match_parent"
+        android:text="Settings"
+        android:textSize="18pt"
+        android:textAlignment="center"/>
+
 </RelativeLayout>
