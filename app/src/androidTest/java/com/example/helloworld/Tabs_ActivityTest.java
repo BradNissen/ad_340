@@ -78,22 +78,23 @@ public class Tabs_ActivityTest {
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
-    @Test
-    public void swipeTabsTest(){
-        onView(withId(R.id.container)).perform(swipeLeft());
-        onView(withId(R.id.container)).perform(swipeLeft());
-        onView(withId(R.id.container)).perform(swipeRight());
-
-        //onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button), click()));
-        //onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-
-//        onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions
-//                .actionOnItem(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button))), click()));
-
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(7, ViewActions.click()));
-
-    }
+//
+//    @Test
+//    public void swipeTabsTest(){
+//        onView(withId(R.id.container)).perform(swipeLeft());
+//        onView(withId(R.id.container)).perform(swipeLeft());
+//        onView(withId(R.id.container)).perform(swipeRight());
+//
+//        //onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button), click()));
+//        //onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+//
+////        onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions
+////                .actionOnItem(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button))), click()));
+//
+//        onView(ViewMatchers.withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(7, ViewActions.click()));
+//
+//    }
 
 
     /**
