@@ -11,17 +11,25 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+
+import com.example.helloworld.models.MatchItem;
+import com.example.helloworld.viewmodels.FirebaseMatchViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tabs_Activity extends AppCompatActivity {
+public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFragment.OnListFragmentInteractionListener {
 
     private static final String TAG = "Tabs_Activity";
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
+    private FirebaseMatchViewModel viewModel;
+    private EditText newMatchItemText;
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +37,14 @@ public class Tabs_Activity extends AppCompatActivity {
         // it will get the page to a tab layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tabs_activity);
-        Log.d(TAG, "onCreate: Starting");
+        //Log.d(TAG, "onCreate: Starting");
 
         // Adding Toolbar to Main screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        viewModel = new FirebaseMatchViewModel();
+        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
 
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.container);
@@ -47,9 +58,14 @@ public class Tabs_Activity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new ProfileFragment(), "Profile");
-        adapter.addFragment(new MatchesFragment(), "Matches");
+        adapter.addFragment(new MatchesItemFragment(), "Matches");
         adapter.addFragment(new SettingsFragment(), "Settings");
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onListFragmentInteraction(MatchItem item) {
+
     }
 
     static class Adapter extends FragmentPagerAdapter {

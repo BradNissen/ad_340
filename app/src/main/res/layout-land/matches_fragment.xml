@@ -61,17 +61,17 @@
             <!--android:text="Action" />-->
 
 
-        <TextView
-            android:id="@+id/favorite_display"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/cards_button_height"
-            android:layout_marginRight="70dp"
-            app:srcCompat="@drawable/ic_favorite"
-            android:layout_below="@+id/card_text"
-            android:layout_alignParentRight="true"
-            style="?android:attr/borderlessButtonStyle"
-            android:tint="@color/button_grey"
-            android:text=""/>
+        <!--<TextView-->
+            <!--android:id="@+id/favorite_display"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="@dimen/cards_button_height"-->
+            <!--android:layout_marginRight="70dp"-->
+            <!--app:srcCompat="@drawable/ic_favorite"-->
+            <!--android:layout_below="@+id/card_text"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--style="?android:attr/borderlessButtonStyle"-->
+            <!--android:tint="@color/button_grey"-->
+            <!--android:text=""/>-->
 
         <ImageButton
             android:id="@+id/favorite_button"
