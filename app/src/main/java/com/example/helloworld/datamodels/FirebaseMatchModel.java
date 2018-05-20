@@ -25,12 +25,12 @@ public class FirebaseMatchModel {
     }
 
     public void addMatchItem(MatchItem item) {
-        DatabaseReference todoItemsRef = mDatabase.child("matchItems");
+        DatabaseReference todoItemsRef = mDatabase.child("matches");
         todoItemsRef.push().setValue(item);
     }
 
     public void getMatchItems(Consumer<DataSnapshot> dataChangedCallback, Consumer<DatabaseError> dataErrorCallback) {
-        DatabaseReference matchItemsRef = mDatabase.child("matchItems");
+        DatabaseReference matchItemsRef = mDatabase.child("matches");
         ValueEventListener matchItemsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -47,7 +47,7 @@ public class FirebaseMatchModel {
     }
 
     public void updateTodoItemById(MatchItem item) {
-        DatabaseReference todoItemsRef = mDatabase.child("matchItems");
+        DatabaseReference todoItemsRef = mDatabase.child("matches");
         todoItemsRef.child(item.uid).setValue(item);
     }
 

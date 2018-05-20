@@ -15,7 +15,7 @@ import java.util.Map;
 public class MatchItem implements Parcelable {
 
     public String imageUrl;
-    public Boolean liked;
+    public boolean favorite;
     public String name;
     public String uid;
 
@@ -25,13 +25,13 @@ public class MatchItem implements Parcelable {
 
     public MatchItem(String imageUrl, boolean liked, String name) {
         this.imageUrl = imageUrl;
-        this.liked = liked;
+        this.favorite = liked;
         this.name = name;
     }
 
     public MatchItem(Parcel in) {
         imageUrl = in.readString();
-        liked = in.readByte() != 0;
+        favorite = in.readByte() != 0;
         name = in.readString();
 
     }
@@ -54,7 +54,7 @@ public class MatchItem implements Parcelable {
         HashMap<String, Object> result = new HashMap<>();
 
         result.put("imageUrl", imageUrl);
-        result.put("liked", liked);
+        result.put("liked", favorite);
         result.put("name", name);
         result.put("uid", uid);
 
@@ -70,7 +70,7 @@ public class MatchItem implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeString(imageUrl);
-        dest.writeByte((byte) (liked ? 1 : 0));
+        dest.writeByte((byte) (favorite ? 1 : 0));
         dest.writeString(name);
     }
 }

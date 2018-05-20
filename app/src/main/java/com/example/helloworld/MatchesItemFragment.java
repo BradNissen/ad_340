@@ -3,7 +3,6 @@ package com.example.helloworld;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +30,7 @@ public class MatchesItemFragment extends Fragment {
     public static final String ARG_DATA_SET = "data-set";
 
     // TODO: Customize parameters
-    private int mColumnCount = 3;
+    private int mColumnCount = 6;
     private List<MatchItem> mDataSet;
     private OnListFragmentInteractionListener mListener;
     private MyMatchesItemRecyclerViewAdapter adapter;
@@ -65,11 +64,9 @@ public class MatchesItemFragment extends Fragment {
     }
 
 
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.matches_fragment, container, false);
+        View view = inflater.inflate(R.layout.recycler_view, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -80,17 +77,20 @@ public class MatchesItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adapter = new MyMatchesItemRecyclerViewAdapter(mDataSet, mListener);
-            recyclerView.setAdapter(adapter);
 
             FirebaseMatchViewModel viewModel = new FirebaseMatchViewModel();
+
+            //this will pass in my lambda function and it will return a function.
             viewModel.getMatchItems((ArrayList<MatchItem> matches) -> {
-                //adapter.update(matches);
-                // See class Slack channel for article
-                //ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+
+
+                MyMatchesItemRecyclerViewAdapter adapter = new MyMatchesItemRecyclerViewAdapter(matches, mListener);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                recyclerView.setLayoutManager(layoutManager);
+
             });
         }
         return view;

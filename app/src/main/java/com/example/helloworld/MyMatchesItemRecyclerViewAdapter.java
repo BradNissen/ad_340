@@ -9,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.helloworld.models.MatchItem;
-
-import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
@@ -44,22 +44,24 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
 
         holder.mItem = mValues.get(position);
         holder.mName.setText(mValues.get(position).name);
-        holder.sImageUrl = mValues.get(position).imageUrl;
+        holder.stringImageUrl = mValues.get(position).imageUrl;
 
-        holder.sLike = mValues.get(position).liked;
+        Picasso.get().load(holder.stringImageUrl).into(holder.mImageUrl); // set image url into ImageView
+        holder.mFav = mValues.get(position).favorite;
 
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+
+        holder.mFavorite.setOnClickListener(v -> {
+            if (null != mListener) {
+
+
+                Toast.makeText(holder.mView.getContext(), "You liked " + mValues.get(position).name, Toast.LENGTH_LONG).show();
+
+                mListener.onListFragmentInteraction(holder.mItem);
+
+        }});
     }
+
 
     @Override
     public int getItemCount() {
@@ -73,12 +75,11 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         public MatchItem mItem;
 
         public ImageView mImageUrl;
-        public ImageButton mLike;
+        public ImageButton mFavorite;
         public TextView mName;
 
-        public String sImageUrl;
-        public Boolean sLike;
-        public String sName;
+        public String stringImageUrl;
+        public boolean mFav;
 
 
 
@@ -86,9 +87,10 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mImageUrl = view.findViewById(R.id.card_image);
-            mLike = view.findViewById(R.id.favorite_button);
             mName = view.findViewById(R.id.card_title);
+            mImageUrl = view.findViewById(R.id.card_image);
+            mFavorite = view.findViewById(R.id.favorite_button);
+
         }
 
         @Override
