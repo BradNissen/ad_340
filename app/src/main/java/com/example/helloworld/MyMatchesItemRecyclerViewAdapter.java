@@ -58,7 +58,7 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
                 mListener.onListFragmentInteraction(holder.mItem);
 
 
-        }});
+            }});
     }
 
 

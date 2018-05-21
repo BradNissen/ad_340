@@ -58,7 +58,19 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
-        //Espresso.pressBack();
+
+
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        Espresso.pressBack();
+
+//        onView(withId(R.id.nameTextEdit)).check(matches(withText("")));
+//        onView(withId(R.id.UserNameTextEdit)).check(matches(withText("")));
+//        onView(withId(R.id.EmailTextEdit)).check(matches(withText("")));
+//        onView(withId(R.id.locationTextEdit)).check(matches(withText("")));
+//        onView(withId(R.id.jobTextEdit)).check(matches(withText("")));
+//        onView(withId(R.id.descriptionTextEdit)).check(matches(withText("")));
+
     }
 
     //PASSED
@@ -81,6 +93,10 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
+
+
+
+
     }
 
     //PASSED

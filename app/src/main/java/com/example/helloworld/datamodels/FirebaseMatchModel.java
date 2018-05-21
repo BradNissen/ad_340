@@ -24,10 +24,10 @@ public class FirebaseMatchModel {
         listeners = new HashMap<>();
     }
 
-    public void addMatchItem(MatchItem item) {
-        DatabaseReference todoItemsRef = mDatabase.child("matches");
-        todoItemsRef.push().setValue(item);
-    }
+//    public void addMatchItem(MatchItem item) {
+//        DatabaseReference todoItemsRef = mDatabase.child("matches");
+//        todoItemsRef.push().setValue(item);
+//    }
 
     public void getMatchItems(Consumer<DataSnapshot> dataChangedCallback, Consumer<DatabaseError> dataErrorCallback) {
         DatabaseReference matchItemsRef = mDatabase.child("matches");
@@ -46,13 +46,13 @@ public class FirebaseMatchModel {
         listeners.put(matchItemsRef, matchItemsListener);
     }
 
-    public void updateTodoItemById(MatchItem item) {
-        DatabaseReference todoItemsRef = mDatabase.child("matches");
-        todoItemsRef.child(item.uid).setValue(item);
-    }
+//    public void updateTodoItemById(MatchItem item) {
+//        DatabaseReference todoItemsRef = mDatabase.child("matches");
+//        todoItemsRef.child(item.uid).setValue(item);
+//    }
 
-    public void clear() {
-        // Clear all the listeners onPause
-        listeners.forEach(Query::removeEventListener);
-    }
+//    public void clear() {
+//        // Clear all the listeners onPause
+//        listeners.forEach(Query::removeEventListener);
+//    }
 }
