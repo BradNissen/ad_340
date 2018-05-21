@@ -1,6 +1,7 @@
 package com.example.helloworld;
 
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -43,21 +44,19 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
         holder.mItem = mValues.get(position);
-        holder.mName.setText(mValues.get(position).name);
-        holder.stringImageUrl = mValues.get(position).imageUrl;
+        holder.mName.setText(mValues.get(position).name); // get name
+        holder.stringImageUrl = mValues.get(position).imageUrl; //get image url
+        holder.mFav = mValues.get(position).favorite; // get the boolean
 
         Picasso.get().load(holder.stringImageUrl).into(holder.mImageUrl); // set image url into ImageView
-        holder.mFav = mValues.get(position).favorite;
 
 
 
         holder.mFavorite.setOnClickListener(v -> {
             if (null != mListener) {
-
-
                 Toast.makeText(holder.mView.getContext(), "You liked " + mValues.get(position).name, Toast.LENGTH_LONG).show();
-
                 mListener.onListFragmentInteraction(holder.mItem);
+
 
         }});
     }
