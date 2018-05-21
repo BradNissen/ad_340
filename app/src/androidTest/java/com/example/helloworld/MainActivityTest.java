@@ -62,8 +62,7 @@ public class MainActivityTest {
 
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //Espresso.pressBack();
-
+        Espresso.pressBackUnconditionally();
     }
 
     //PASSED

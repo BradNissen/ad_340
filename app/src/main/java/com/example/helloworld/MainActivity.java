@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Make this a method to perform and cler fields.
+    //Make this a method to perform and clear fields.
     @Override
     protected void onRestart() {
         super.onRestart();
