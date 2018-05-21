@@ -1,9 +1,6 @@
 package com.example.helloworld.datamodels;
 
-
-import com.example.helloworld.MatchesItemFragment;
 import com.example.helloworld.models.MatchItem;
-//import com.example.mcnutt.inclassdemo.models.TodoItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,10 +21,10 @@ public class FirebaseMatchModel {
         listeners = new HashMap<>();
     }
 
-//    public void addMatchItem(MatchItem item) {
-//        DatabaseReference todoItemsRef = mDatabase.child("matches");
-//        todoItemsRef.push().setValue(item);
-//    }
+    public void addMatchItem(MatchItem item) {
+        DatabaseReference todoItemsRef = mDatabase.child("matches");
+        todoItemsRef.push().setValue(item);
+    }
 
     public void getMatchItems(Consumer<DataSnapshot> dataChangedCallback, Consumer<DatabaseError> dataErrorCallback) {
         DatabaseReference matchItemsRef = mDatabase.child("matches");
@@ -46,13 +43,13 @@ public class FirebaseMatchModel {
         listeners.put(matchItemsRef, matchItemsListener);
     }
 
-//    public void updateTodoItemById(MatchItem item) {
-//        DatabaseReference todoItemsRef = mDatabase.child("matches");
-//        todoItemsRef.child(item.uid).setValue(item);
-//    }
+    public void updateTodoItemById(MatchItem item) {
+        DatabaseReference todoItemsRef = mDatabase.child("matches");
+        todoItemsRef.child(item.uid).setValue(item);
+    }
 
-//    public void clear() {
-//        // Clear all the listeners onPause
-//        listeners.forEach(Query::removeEventListener);
-//    }
+    public void clear() {
+        // Clear all the listeners onPause
+        listeners.forEach(Query::removeEventListener);
+    }
 }
