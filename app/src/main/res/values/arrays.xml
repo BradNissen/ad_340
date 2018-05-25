@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genders">
+        <item>-- Choose --</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Trans-male</item>
+        <item>Trans-female</item>
+        <item>other....</item>
+
+    </string-array>
+
+</resources>

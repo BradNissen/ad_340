@@ -6,14 +6,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -23,6 +24,7 @@ import com.example.helloworld.entity.User;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Objects;
 
 public class SettingsFragment extends Fragment {
 
@@ -36,9 +38,14 @@ public class SettingsFragment extends Fragment {
     RadioButton rb;
     Switch switchButton;
     Button button_update;
+    Spinner genders;
+    String gendersResult;
 
     int progress_value;
     int progress_value_age;
+
+    ArrayAdapter<CharSequence> genderAdapter;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +53,8 @@ public class SettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.settings_fragment, container, false);
 
 
-        rg = view.findViewById(R.id.r_group);
+        //rg = view.findViewById(R.id.r_group);
+        genders = view.findViewById(R.id.genders);
         time_picker = view.findViewById(R.id.timePicker);
         button_update = view.findViewById(R.id.update);
         seek_bar = view.findViewById(R.id.distance);
@@ -61,6 +69,11 @@ public class SettingsFragment extends Fragment {
 
         progress_bar();
         progress_bar_age();
+
+
+        genderAdapter = ArrayAdapter.createFromResource(Objects.requireNonNull(getContext()),R.array.genders, android.R.layout.simple_spinner_dropdown_item);
+        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genders.setAdapter(genderAdapter);
 
 
         new GetUserTask(getActivity(), this, "bradanissen@gmail.com").execute();
@@ -79,7 +92,9 @@ public class SettingsFragment extends Fragment {
                     newUser.setHour(getHourFromPicker());
                     newUser.setMinute(getMinuteFromPicker());
                     newUser.setAgeRange(ageMax());
-                    newUser.setGender(getGenderSetString());
+                    //newUser.setGender(getGenderSetString());
+                    gendersResult = genders.getSelectedItem().toString();
+                    newUser.setGender(gendersResult);
                     newUser.setPublic(getSwitch());
                     newUser.setSearchDistance(getDistance());
 
@@ -222,7 +237,7 @@ public class SettingsFragment extends Fragment {
             AppDatabase db = AppDatabaseSingleton.getDatabase(activity.getApplicationContext());
             db.userDao().insertUsers(user);
 
-            Log.v("mylog", user.toString());
+            //Log.v("mylog", user.toString());
             return user;
         }
 
@@ -232,13 +247,8 @@ public class SettingsFragment extends Fragment {
             if(user == null || activity == null) {
                 return;
             }
-            Toast.makeText(activity.getApplicationContext(), "Email=" +user.getEmail() + "\n"+
-                                                                "Time="+user.getHour() + " : " + user.getMinute() +"\n"+
-                                                                "Dist="+user.getSearchDistance() +"\n"+
-                                                                "ageRange="+user.getAgeRange() +"\n"+
-                                                                "Gender="+user.getGender() +"\n"+
-                                                                "Public="+user.isPublic() , Toast.LENGTH_SHORT).show();
-            Toast.makeText(activity.getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+
+            Toast.makeText(activity.getApplicationContext(), "Saved!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -288,31 +298,25 @@ public class SettingsFragment extends Fragment {
                 return;
             }
 
-            //set the time
+            //set the time fields when open.
             fragment.time_picker.setHour(user.getHour());
             fragment.time_picker.setMinute(user.getMinute());
-
-
-            //set the
-            fragment.switchButton.setChecked(user.isPublic());
-
-
             fragment.seek_bar.setProgress(user.getSearchDistance());
-
             fragment.seek_bar_age.setProgress(user.getAgeRange() - 18);
-
+            fragment.switchButton.setChecked(user.isPublic());
+            fragment.genders.setSelection(fragment.genderAdapter.getPosition(user.getGender()));
 
 
 
 
             //Log.v("mylog", user.toString());
-            Toast.makeText(fragment.getContext(), "Email=" +user.getEmail() + "\n"+
-                    "Time="+user.getHour() + " : " + user.getMinute() +"\n"+
-                    "Dist="+user.getSearchDistance() +"\n"+
-                    "ageRange="+user.getAgeRange() +"\n"+
-                    "Gender="+user.getGender() +"\n"+
-                    "Public="+user.isPublic() , Toast.LENGTH_LONG).show();
-            Toast.makeText(fragment.getContext(), "Success", Toast.LENGTH_LONG).show();
+//            Toast.makeText(fragment.getContext(), "Email=" +user.getEmail() + "\n"+
+//                    "Time="+user.getHour() + " : " + user.getMinute() +"\n"+
+//                    "Dist="+user.getSearchDistance() +"\n"+
+//                    "ageRange="+user.getAgeRange() +"\n"+
+//                    "Gender="+user.getGender() +"\n"+
+//                    "Public="+user.isPublic() , Toast.LENGTH_LONG).show();
+//            Toast.makeText(fragment.getContext(), "Success", Toast.LENGTH_LONG).show();
 
 
         }
