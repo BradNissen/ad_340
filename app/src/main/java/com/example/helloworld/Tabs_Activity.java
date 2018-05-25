@@ -1,20 +1,15 @@
 package com.example.helloworld;
 
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.content.Intent;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 
 import com.example.helloworld.models.MatchItem;
 import com.example.helloworld.viewmodels.FirebaseMatchViewModel;
@@ -30,6 +25,7 @@ public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFrag
     private FirebaseMatchViewModel viewModel;
     private EditText newMatchItemText;
     private FrameLayout frameLayout;
+    public static AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +49,10 @@ public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFrag
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+
+        //initialize the database
+        //appDatabase = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "User").build();
     }
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
@@ -96,4 +96,6 @@ public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFrag
             return mFragmentTitleList.get(position);
         }
     }
+
+
 }

@@ -15,12 +15,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.Period;
-import java.time.temporal.ChronoUnit;
-
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -340,6 +334,8 @@ public class MainActivity extends AppCompatActivity {
         outState.putString(Constants.KEY_DESC, decsriptionInput.getText().toString());
         outState.putString(Constants.KEY_DOB, mDisplayDate.getText().toString());
     }
+
+
 
     @Override
     protected void onResume() {

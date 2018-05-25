@@ -1,7 +1,6 @@
 package com.example.helloworld;
 
 
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.helloworld.models.MatchItem;
 import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -21,6 +21,7 @@ import java.util.List;
  * specified {@link MatchesItemFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
+
 public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchesItemRecyclerViewAdapter.ViewHolder> {
 
     private final List<MatchItem> mValues;
@@ -36,6 +37,7 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.matches_fragment, parent, false);
+
         return new ViewHolder(view);
     }
 
@@ -79,7 +81,6 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
 
         public String stringImageUrl;
         public boolean mFav;
-
 
 
 
