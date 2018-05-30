@@ -2,14 +2,8 @@ package com.example.helloworld.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
-import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @IgnoreExtraProperties
 public class MatchItem implements Parcelable {
@@ -18,6 +12,8 @@ public class MatchItem implements Parcelable {
     public boolean favorite;
     public String name;
     public String uid;
+    public String lat;
+    public String longitude;
 
     public MatchItem() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)

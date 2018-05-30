@@ -27,6 +27,7 @@ public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFrag
     private FrameLayout frameLayout;
     public static AppDatabase appDatabase;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

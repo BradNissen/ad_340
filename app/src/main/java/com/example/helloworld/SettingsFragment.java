@@ -209,15 +209,6 @@ public class SettingsFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
     private static class UpdateUserTask extends AsyncTask<Void, Void, User> {
 
         private WeakReference<Activity> weakActivity;

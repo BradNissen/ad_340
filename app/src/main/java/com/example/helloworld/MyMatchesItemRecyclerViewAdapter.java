@@ -49,9 +49,11 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         holder.mName.setText(mValues.get(position).name); // get name
         holder.stringImageUrl = mValues.get(position).imageUrl; //get image url
         holder.mFav = mValues.get(position).favorite; // get the boolean
+        holder.tv_lat.setText(mValues.get(position).lat);
+        holder.tv_longitude.setText(mValues.get(position).longitude);
+
 
         Picasso.get().load(holder.stringImageUrl).into(holder.mImageUrl); // set image url into ImageView
-
 
 
         holder.mFavorite.setOnClickListener(v -> {
@@ -69,7 +71,6 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         return mValues.size();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
@@ -78,7 +79,9 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         public ImageView mImageUrl;
         public ImageButton mFavorite;
         public TextView mName;
-
+        public TextView tv_lat;
+        public TextView tv_longitude;
+        
         public String stringImageUrl;
         public boolean mFav;
 
@@ -90,6 +93,8 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
             mName = view.findViewById(R.id.card_title);
             mImageUrl = view.findViewById(R.id.card_image);
             mFavorite = view.findViewById(R.id.favorite_button);
+            tv_lat = view.findViewById(R.id.card_lat);
+            tv_longitude = view.findViewById(R.id.card_long);
 
         }
 
