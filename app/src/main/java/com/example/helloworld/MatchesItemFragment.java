@@ -16,11 +16,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.helloworld.models.MatchItem;
 import com.example.helloworld.viewmodels.FirebaseMatchViewModel;
@@ -104,7 +103,19 @@ public class MatchesItemFragment extends Fragment {
             viewModel.getMatchItems((ArrayList<MatchItem> matches) -> {
 
 
-                MyMatchesItemRecyclerViewAdapter adapter = new MyMatchesItemRecyclerViewAdapter(matches, mListener);
+                //toggleNetworkUpdates(view);
+                if (ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                        ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                    Location loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                    latitudeNetwork = loc.getLatitude();
+                    longitudeNetwork = loc.getLongitude();
+                    Log.v("LAT_LNG","LAT="+String.valueOf(latitudeNetwork) + " LNG=" + String.valueOf(longitudeNetwork));
+                }
+
+
+                MyMatchesItemRecyclerViewAdapter adapter = new MyMatchesItemRecyclerViewAdapter(matches, mListener, String.valueOf(latitudeNetwork), String.valueOf(longitudeNetwork));
                 recyclerView.setAdapter(adapter);
                 recyclerView.setHasFixedSize(true);
 
@@ -134,20 +145,11 @@ public class MatchesItemFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(MatchItem item);
     }
+
 
 
 
@@ -178,33 +180,24 @@ public class MatchesItemFragment extends Fragment {
         if(!checkLocation()) {
             return;
         }
-        Button button = (Button) view;
-        if(button.getText().equals(getResources().getString(R.string.pause))) {
-            locationManager.removeUpdates(locationListenerNetwork);
-            button.setText(R.string.resume);
-        }
+
         else {
-            if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-                    ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                    ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60 * 1000, 10, locationListenerNetwork);
-                Toast.makeText(getContext(), R.string.network_provider_started_running, Toast.LENGTH_LONG).show();
-                button.setText(R.string.pause);
+
             }
         }
     }
 
     private final LocationListener locationListenerNetwork = new LocationListener() {
         public void onLocationChanged(Location location) {
+
             longitudeNetwork = location.getLongitude();
             latitudeNetwork = location.getLatitude();
+            Log.v("LAT_LONGS", "LAT=" + String.valueOf(latitudeNetwork) + " LONG=" + String.valueOf(longitudeNetwork));
 
-            // I don't think I need a button?...
-//            runOnUiThread(()-> {
-//                longitudeValueNetwork.setText(String.format("%s", longitudeNetwork));
-//                latitudeValueNetwork.setText(String.format("%s", latitudeNetwork));
-//                Toast.makeText(getContext(), R.string.network_provider_update, Toast.LENGTH_SHORT).show();
-//            });
         }
 
         @Override

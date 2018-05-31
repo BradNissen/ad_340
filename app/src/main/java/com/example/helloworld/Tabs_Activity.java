@@ -31,6 +31,7 @@ public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFrag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         // it will get the page to a tab layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tabs_activity);

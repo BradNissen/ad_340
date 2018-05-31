@@ -72,11 +72,26 @@ d
             <!--android:text=""/>-->
 
         <TextView
-            android:id="@+id/card_lat"
+        android:id="@+id/card_lat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitute"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/card_text"/>
+        <TextView
+            android:id="@+id/gps_lat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Latitute"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="150dp"
+            android:layout_below="@+id/card_text"/>
+
+        <TextView
+            android:id="@+id/distance_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distance"
+            android:layout_marginLeft="250dp"
             android:layout_below="@+id/card_text"/>
 
         <TextView
@@ -85,6 +100,13 @@ d
             android:layout_height="wrap_content"
             android:text="Longitude"
             android:layout_marginLeft="20dp"
+            android:layout_below="@+id/card_lat"/>
+        <TextView
+            android:id="@+id/gps_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude"
+            android:layout_marginLeft="150dp"
             android:layout_below="@+id/card_lat"/>
 
         <ImageButton
