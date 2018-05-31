@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,12 +66,20 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         holder.tv_gps_lat.setText(gps_lat);
         holder.tv_gps_lng.setText(gps_lng);
 
-        double distance_meters = geoToDistance(match_lat_str,match_lng_str,gps_lat,gps_lng);
-        holder.tv_distance.setText(String.valueOf(distance_meters));
+        double distance = geoToDistanceInMiles(match_lat_str,match_lng_str,gps_lat,gps_lng);
 
+        //String distance_string = String.valueOf(distance);
+
+        String formatted = String.format("%.2f",distance);
+
+        holder.tv_distance.setText(formatted);
 
 
         Picasso.get().load(holder.stringImageUrl).into(holder.mImageUrl); // set image url into ImageView
+
+        if (distance > 10) {
+            holder.whole_card.setVisibility(View.GONE);
+        }
 
         if (holder.mFav){
             holder.mFavorite.setColorFilter(Color.RED);
@@ -100,7 +109,7 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         return mValues.size();
     }
 
-    public double geoToDistance(String lat, String lng, String gps_lat, String gps_lng){
+    public double geoToDistanceInMiles(String lat, String lng, String gps_lat, String gps_lng){
 
         double match_lat = Double.valueOf(lat);
         double match_lng = Double.valueOf(lng);
@@ -115,15 +124,16 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         Location current_location = new Location("");
         current_location.setLatitude(current_lat);
         current_location.setLongitude(current_lng);
+        double dist = match_location.distanceTo(current_location);
 
-
-        return match_location.distanceTo(current_location);
+        return dist * 0.000621371192;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
         public MatchItem mItem;
+        public RelativeLayout whole_card;
 
         public ImageView mImageUrl;
         public ImageButton mFavorite;
@@ -150,6 +160,7 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
             tv_gps_lat = view.findViewById(R.id.gps_lat);
             tv_gps_lng = view.findViewById(R.id.gps_long);
             tv_distance = view.findViewById(R.id.distance_tv);
+            whole_card = view.findViewById(R.id.whole_card); // <-- card to disappear?
         }
 
         @Override

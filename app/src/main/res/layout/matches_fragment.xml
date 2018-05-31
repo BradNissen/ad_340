@@ -13,6 +13,7 @@
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/whole_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 d
