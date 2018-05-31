@@ -15,7 +15,6 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -39,31 +38,31 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> activityTestRule
             = new ActivityTestRule<>(MainActivity.class);
 
-    //PASSED
-    @Test
-    public void validInputTest() {
-
-        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
-        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
-        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
-        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
-        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
-        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
-        Espresso.closeSoftKeyboard();
-        setDate(R.id.dateTextView, 1990, 8, 13);
-        Espresso.closeSoftKeyboard();
-        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SubmitButton)).perform(scrollTo());
-        onView(withId(R.id.SubmitButton)).perform(click());
-
-        Espresso.pressBackUnconditionally();
-
-
-
-
-    }
+//    //PASSED
+//    @Test
+//    public void validInputTest() {
+//
+//        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+//        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+//        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+//        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+//        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+//        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
+//        Espresso.closeSoftKeyboard();
+//        setDate(R.id.dateTextView, 1990, 8, 13);
+//        Espresso.closeSoftKeyboard();
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        //Espresso.closeSoftKeyboard();
+//        onView(withId(R.id.SubmitButton)).perform(scrollTo());
+//        onView(withId(R.id.SubmitButton)).perform(click());
+//
+//        Espresso.pressBackUnconditionally();
+//
+//
+//
+//
+//    }
 
     //PASSED
     @Test
