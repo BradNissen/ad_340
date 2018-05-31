@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.helloworld.entity.User;
 import com.example.helloworld.models.MatchItem;
 import com.example.helloworld.viewmodels.FirebaseMatchViewModel;
 
@@ -87,6 +88,15 @@ public class MatchesItemFragment extends Fragment {
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
+
+
+
+        List<User> users = Tabs_Activity.appDatabase.userDao().getAll();
+        int searchDistance = users.get(0).getSearchDistance();
+        //Log.v("Users", String.valueOf(users.get(0).getSearchDistance()));
+
+
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -115,7 +125,7 @@ public class MatchesItemFragment extends Fragment {
                 }
 
 
-                MyMatchesItemRecyclerViewAdapter adapter = new MyMatchesItemRecyclerViewAdapter(matches, mListener, String.valueOf(latitudeNetwork), String.valueOf(longitudeNetwork));
+                MyMatchesItemRecyclerViewAdapter adapter = new MyMatchesItemRecyclerViewAdapter(matches, mListener, String.valueOf(latitudeNetwork), String.valueOf(longitudeNetwork), searchDistance);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setHasFixedSize(true);
 

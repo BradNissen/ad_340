@@ -88,7 +88,7 @@ public class SettingsFragment extends Fragment {
 
                     User newUser = new User();
 
-                    newUser.setEmail("bradanissen@gmail.com"); //    <-- I don't think I need the email.
+                    newUser.setEmail("bradanissen@gmail.com"); //
                     newUser.setHour(getHourFromPicker());
                     newUser.setMinute(getMinuteFromPicker());
                     newUser.setAgeRange(ageMax());

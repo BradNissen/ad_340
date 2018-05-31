@@ -1,5 +1,6 @@
 package com.example.helloworld;
 
+import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -54,7 +55,7 @@ public class Tabs_Activity extends AppCompatActivity  implements MatchesItemFrag
 
 
         //initialize the database
-        //appDatabase = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "User").build();
+        appDatabase = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "User").allowMainThreadQueries().build();
     }
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {

@@ -27,24 +27,32 @@ import java.util.List;
 
 public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMatchesItemRecyclerViewAdapter.ViewHolder> {
 
+
     private final List<MatchItem> mValues;
     private final MatchesItemFragment.OnListFragmentInteractionListener mListener;
     public String gps_lat;
     public String gps_lng;
+    public int search_distance;
+    public View view;
 
 
-    public MyMatchesItemRecyclerViewAdapter(List<MatchItem> items, MatchesItemFragment.OnListFragmentInteractionListener listener,String gps_lat, String gps_lng) {
+
+    public MyMatchesItemRecyclerViewAdapter(List<MatchItem> items, MatchesItemFragment.OnListFragmentInteractionListener listener,String gps_lat, String gps_lng, int searchDistance) {
         mValues = items;
         mListener = listener;
         this.gps_lat = gps_lat;
         this.gps_lng = gps_lng;
+        this.search_distance = searchDistance;
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.matches_fragment, parent, false);
+
+
 
         return new ViewHolder(view);
     }
@@ -61,39 +69,50 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         String match_lat_str = mValues.get(position).lat;
         String match_lng_str = mValues.get(position).longitude;
 
-        holder.tv_lat.setText(match_lat_str);
-        holder.tv_longitude.setText(match_lng_str);
-        holder.tv_gps_lat.setText(gps_lat);
-        holder.tv_gps_lng.setText(gps_lng);
+//        holder.tv_lat.setText(match_lat_str);
+//        holder.tv_longitude.setText(match_lng_str);
+//        holder.tv_gps_lat.setText(gps_lat);
+//        holder.tv_gps_lng.setText(gps_lng);
 
         double distance = geoToDistanceInMiles(match_lat_str,match_lng_str,gps_lat,gps_lng);
 
         //String distance_string = String.valueOf(distance);
 
-        String formatted = String.format("%.2f",distance);
+        //String formatted = String.format("%.2f",distance);
 
-        holder.tv_distance.setText(formatted);
-
+        //holder.tv_distance.setText(formatted);
 
         Picasso.get().load(holder.stringImageUrl).into(holder.mImageUrl); // set image url into ImageView
 
-        if (distance > 10) {
-            holder.whole_card.setVisibility(View.GONE);
+
+        /** pulled from firebase.google.com and it's true it will change to RED */
+        if (!holder.mFav){
+            holder.likedButton.setColorFilter(Color.GRAY);
+        } else {
+            holder.likedButton.setColorFilter(Color.RED);
         }
 
-        if (holder.mFav){
-            holder.mFavorite.setColorFilter(Color.RED);
+        /** Will take the queried result from the room database and input it into the distance */
+        if (distance > search_distance) {
+
+            holder.mImageUrl.setColorFilter(Color.WHITE);
+            holder.mName.setTextColor(Color.WHITE);
+            holder.likedButton.setColorFilter(Color.WHITE);
         }
 
-        holder.mFavorite.setOnClickListener(v -> {
+
+
+        holder.likedButton.setOnClickListener(v -> {
             if (null != mListener) {
 
-                if(holder.mFav){
-                    holder.mFavorite.setColorFilter(Color.RED);
+                // If its clicked and its true.
+                if(!holder.mFav){
+                    holder.likedButton.setColorFilter(Color.RED);
+                    holder.mFav = !holder.mFav;
                     Toast.makeText(holder.mView.getContext(), "You liked " + mValues.get(position).name, Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    holder.mFavorite.setColorFilter(Color.GRAY);
+                } else{
+                    holder.likedButton.setColorFilter(Color.GRAY);
+                    holder.mFav = !holder.mFav;
                     Toast.makeText(holder.mView.getContext(), "You unliked " + mValues.get(position).name, Toast.LENGTH_SHORT).show();
                 }
 
@@ -136,14 +155,14 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         public RelativeLayout whole_card;
 
         public ImageView mImageUrl;
-        public ImageButton mFavorite;
+        public ImageButton likedButton;
         public TextView mName;
-        public TextView tv_lat;
-        public TextView tv_longitude;
-        public TextView tv_gps_lat;
-        public TextView tv_gps_lng;
-        public TextView tv_distance;
-        
+//        public TextView tv_lat;
+//        public TextView tv_longitude;
+//        public TextView tv_gps_lat;
+//        public TextView tv_gps_lng;
+//        public TextView tv_distance;
+
         public String stringImageUrl;
         public boolean mFav;
 
@@ -154,12 +173,12 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
             mView = view;
             mName = view.findViewById(R.id.card_title);
             mImageUrl = view.findViewById(R.id.card_image);
-            mFavorite = view.findViewById(R.id.favorite_button);
-            tv_lat = view.findViewById(R.id.card_lat);
-            tv_longitude = view.findViewById(R.id.card_long);
-            tv_gps_lat = view.findViewById(R.id.gps_lat);
-            tv_gps_lng = view.findViewById(R.id.gps_long);
-            tv_distance = view.findViewById(R.id.distance_tv);
+            likedButton = view.findViewById(R.id.favorite_button);
+//            tv_lat = view.findViewById(R.id.card_lat);
+//            tv_longitude = view.findViewById(R.id.card_long);
+//            tv_gps_lat = view.findViewById(R.id.gps_lat);
+//            tv_gps_lng = view.findViewById(R.id.gps_long);
+//            tv_distance = view.findViewById(R.id.distance_tv);
             whole_card = view.findViewById(R.id.whole_card); // <-- card to disappear?
         }
 
@@ -168,4 +187,5 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
             return super.toString();
         }
     }
+
 }

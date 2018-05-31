@@ -32,10 +32,6 @@ public class User {
 
 
 
-
-
-
-
     @NonNull
     public String getEmail() {
         return email;

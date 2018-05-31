@@ -49,66 +49,45 @@ d
             android:textColor="@color/dark_grey"
             android:textSize="@dimen/article_subheading" />
 
-        <!--<Button-->
-            <!--android:id="@+id/action_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@+id/card_text"-->
-            <!--style="?android:attr/borderlessButtonStyle"-->
-            <!--android:textColor="@color/colorPrimary"-->
-            <!--android:text="Action" />-->
-
 
 
         <!--<TextView-->
-            <!--android:id="@+id/favorite_display"-->
+        <!--android:id="@+id/card_lat"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Latitute"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_below="@+id/card_text"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/gps_lat"-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="@dimen/cards_button_height"-->
-            <!--android:layout_marginRight="70dp"-->
-            <!--app:srcCompat="@drawable/ic_favorite"-->
-            <!--android:layout_below="@+id/card_text"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--style="?android:attr/borderlessButtonStyle"-->
-            <!--android:tint="@color/button_grey"-->
-            <!--android:text=""/>-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Latitute"-->
+            <!--android:layout_marginLeft="150dp"-->
+            <!--android:layout_below="@+id/card_text"/>-->
 
-        <TextView
-        android:id="@+id/card_lat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Latitute"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/card_text"/>
-        <TextView
-            android:id="@+id/gps_lat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Latitute"
-            android:layout_marginLeft="150dp"
-            android:layout_below="@+id/card_text"/>
+        <!--<TextView-->
+            <!--android:id="@+id/distance_tv"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="distance"-->
+            <!--android:layout_marginLeft="250dp"-->
+            <!--android:layout_below="@+id/card_text"/>-->
 
-        <TextView
-            android:id="@+id/distance_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="distance"
-            android:layout_marginLeft="250dp"
-            android:layout_below="@+id/card_text"/>
-
-        <TextView
-            android:id="@+id/card_long"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Longitude"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@+id/card_lat"/>
-        <TextView
-            android:id="@+id/gps_long"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Longitude"
-            android:layout_marginLeft="150dp"
-            android:layout_below="@+id/card_lat"/>
+        <!--<TextView-->
+            <!--android:id="@+id/card_long"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Longitude"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_below="@+id/card_lat"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/gps_long"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Longitude"-->
+            <!--android:layout_marginLeft="150dp"-->
+            <!--android:layout_below="@+id/card_lat"/>-->
 
         <ImageButton
             android:id="@+id/favorite_button"

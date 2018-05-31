@@ -3,7 +3,6 @@ package com.example.helloworld;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,9 +22,8 @@ public class ProfileFragment extends Fragment {
     private TextView descriptionFragDisplay;
 
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment,container, false);
 
 
@@ -62,5 +60,42 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+//
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//
+//        Log.i(TAG, "onRestoreInstanceState()");
+//        if (savedInstanceState.containsKey(Constants.KEY_NAME)) {
+//            nameFragDisplay.setText((String)savedInstanceState.get(Constants.KEY_NAME));
+//        }
+//
+//        if (savedInstanceState.containsKey(Constants.KEY_AGE)) {
+//            ageFragDisplay.setText((String) savedInstanceState.get(Constants.KEY_AGE));
+//        }
+//
+//        if (savedInstanceState.containsKey(Constants.KEY_LOCATION)) {
+//            locationFragDisplay.setText((String) savedInstanceState.get(Constants.KEY_LOCATION));
+//        }
+//
+//        if (savedInstanceState.containsKey(Constants.KEY_JOB)) {
+//            jobFragDisplay.setText((String) savedInstanceState.get(Constants.KEY_JOB));
+//        }
+//
+//        if (savedInstanceState.containsKey(Constants.KEY_DESC)) {
+//            descriptionFragDisplay.setText((String) savedInstanceState.get(Constants.KEY_DESC));
+//        }
+//    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Log.i(TAG, "onSaveInstanceState()");
+        outState.putString(Constants.KEY_NAME, nameFragDisplay.getText().toString());
+        outState.putString(Constants.KEY_AGE, ageFragDisplay.getText().toString());
+        outState.putString(Constants.KEY_LOCATION, locationFragDisplay.getText().toString());
+        outState.putString(Constants.KEY_JOB, jobFragDisplay.getText().toString());
+        outState.putString(Constants.KEY_DESC, descriptionFragDisplay.getText().toString());
+    }
 }
