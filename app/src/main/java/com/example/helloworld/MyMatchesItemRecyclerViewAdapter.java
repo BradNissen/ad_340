@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,7 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
 //        holder.tv_gps_lng.setText(gps_lng);
 
         double distance = geoToDistanceInMiles(match_lat_str,match_lng_str,gps_lat,gps_lng);
+        Log.v("Distance..", String.valueOf(distance));
 
         //String distance_string = String.valueOf(distance);
 
@@ -95,9 +97,11 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         /** Will take the queried result from the room database and input it into the distance */
         if (distance > search_distance) {
 
+//            holder.whole_card.setVisibility(View.GONE);
             holder.mImageUrl.setColorFilter(Color.WHITE);
             holder.mName.setTextColor(Color.WHITE);
             holder.likedButton.setColorFilter(Color.WHITE);
+
         }
 
 

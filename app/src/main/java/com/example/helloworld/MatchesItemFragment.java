@@ -41,7 +41,7 @@ public class MatchesItemFragment extends Fragment {
     public static final String ARG_DATA_SET = "data-set";
 
     // TODO: Customize parameters
-    private int mColumnCount = 6;
+    private int mColumnCount;
     private List<MatchItem> mDataSet;
     private OnListFragmentInteractionListener mListener;
     private MyMatchesItemRecyclerViewAdapter adapter;
@@ -49,6 +49,7 @@ public class MatchesItemFragment extends Fragment {
     private LocationManager locationManager;
     public double longitudeNetwork;
     public double latitudeNetwork;
+    public int searchDistance;
 
 
 
@@ -91,9 +92,15 @@ public class MatchesItemFragment extends Fragment {
 
 
 
+        /** From the boot up this wont populate because its not populated, so here is my work around.
+         * catch the exception and set a value for it. it will display all the users within that mileage */
         List<User> users = Tabs_Activity.appDatabase.userDao().getAll();
-        int searchDistance = users.get(0).getSearchDistance();
-        //Log.v("Users", String.valueOf(users.get(0).getSearchDistance()));
+        try {
+            searchDistance = users.get(0).getSearchDistance();
+        }catch (IndexOutOfBoundsException ex) {
+            searchDistance = 10;
+        }
+        Log.v("Users(0)", String.valueOf(users));
 
 
 
@@ -113,11 +120,14 @@ public class MatchesItemFragment extends Fragment {
             viewModel.getMatchItems((ArrayList<MatchItem> matches) -> {
 
 
-                //toggleNetworkUpdates(view);
+
+                toggleNetworkUpdates(view);
                 if (ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                         ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-                    Location loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                    Location loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
 
                     latitudeNetwork = loc.getLatitude();
                     longitudeNetwork = loc.getLongitude();
@@ -171,7 +181,7 @@ public class MatchesItemFragment extends Fragment {
     }
 
     private boolean isLocationEnabled() {
-        return locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
     private void showAlert() {
@@ -195,7 +205,7 @@ public class MatchesItemFragment extends Fragment {
             if (ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(view.getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60 * 1000, 10, locationListenerNetwork);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60 * 1000, 10, locationListenerNetwork);
 
             }
         }

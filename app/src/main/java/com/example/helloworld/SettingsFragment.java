@@ -285,7 +285,7 @@ public class SettingsFragment extends Fragment {
             SettingsFragment fragment = weakFragment.get();
 
             if(user == null || fragment == null) {
-                Toast.makeText(fragment.getContext(), "null", Toast.LENGTH_LONG).show();
+                //Toast.makeText(fragment.getContext(), "null", Toast.LENGTH_LONG).show();
                 return;
             }
 

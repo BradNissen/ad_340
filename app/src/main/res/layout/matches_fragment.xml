@@ -15,6 +15,7 @@
     <RelativeLayout
         android:id="@+id/whole_card"
         android:layout_width="match_parent"
+        android:visibility="visible"
         android:layout_height="wrap_content">
 d
         <ImageView
