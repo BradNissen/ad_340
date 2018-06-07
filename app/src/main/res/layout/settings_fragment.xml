@@ -21,15 +21,16 @@
         <!--android:text="Daily Reminder:"/>-->
 
     <TimePicker
-
-
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
+
+        android:headerBackground="@android:color/holo_orange_light"
         android:hint="Enter time"
         android:inputType="text"
+        android:numbersSelectorColor="@android:color/holo_orange_light"
         android:textSize="14sp" />
 
 
@@ -40,6 +41,7 @@
         android:layout_gravity="center"
         android:layout_marginStart="0dp"
         android:layout_marginTop="20dp"
+        style="@style/AlertDialog.AppCompat"
         android:text="Maximum Distance" />
 
     <SeekBar
@@ -84,35 +86,6 @@
         android:text="Gender"/>
 
 
-    <!--<RadioGroup-->
-        <!--android:id="@+id/r_group"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content">-->
-
-        <!--<RadioButton-->
-            <!--android:id="@+id/radio_male"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginEnd="40dp"-->
-            <!--android:layout_marginStart="40dp"-->
-            <!--android:checked="true"-->
-            <!--android:text="Male" />-->
-        <!--<RadioButton-->
-            <!--android:id="@+id/radio_female"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Female"-->
-            <!--android:layout_marginEnd="40dp"-->
-            <!--android:layout_marginStart="40dp"/>-->
-        <!--<RadioButton-->
-            <!--android:id="@+id/radio_trans"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Transgender"-->
-            <!--android:layout_marginEnd="40dp"-->
-            <!--android:layout_marginStart="40dp"/>-->
-    <!--</RadioGroup>-->
-
     <Spinner
         android:id="@+id/genders"
         android:layout_marginStart="30dp"
@@ -137,6 +110,7 @@
         android:showText="true"
         android:splitTrack="false"
         android:textAlignment="textEnd"
+        android:textColorLink="@android:color/holo_orange_light"
         android:textOff="No"
         android:textOn="Yes"
         android:textStyle="bold|italic"

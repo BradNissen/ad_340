@@ -1,17 +1,17 @@
 package com.example.helloworld.viewmodels;
 
 
-import com.example.helloworld.MatchesItemFragment;
-import com.example.helloworld.datamodels.FirebaseMatchModel;
-import com.example.helloworld.models.MatchItem;
+        import com.example.helloworld.MatchesItemFragment;
+        import com.example.helloworld.datamodels.FirebaseMatchModel;
+        import com.example.helloworld.models.MatchItem;
 
 //import com.example.mcnutt.inclassdemo.datamodels.FirebaseTodoModel;
 //import com.example.mcnutt.inclassdemo.models.TodoItem;
-import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DataSnapshot;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.function.Consumer;
 
 public class   FirebaseMatchViewModel {
 

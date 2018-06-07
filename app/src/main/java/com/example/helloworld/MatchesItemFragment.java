@@ -52,8 +52,6 @@ public class MatchesItemFragment extends Fragment {
     public int searchDistance;
 
 
-
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -81,7 +79,6 @@ public class MatchesItemFragment extends Fragment {
         }
     }
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view, container, false);
@@ -95,12 +92,13 @@ public class MatchesItemFragment extends Fragment {
         /** From the boot up this wont populate because its not populated, so here is my work around.
          * catch the exception and set a value for it. it will display all the users within that mileage */
         List<User> users = Tabs_Activity.appDatabase.userDao().getAll();
+
         try {
             searchDistance = users.get(0).getSearchDistance();
         }catch (IndexOutOfBoundsException ex) {
             searchDistance = 10;
         }
-        Log.v("Users(0)", String.valueOf(users));
+        //Log.v("Users(0)", String.valueOf(users));
 
 
 
@@ -118,7 +116,6 @@ public class MatchesItemFragment extends Fragment {
 
             //this will pass in my lambda function and it will return a function.
             viewModel.getMatchItems((ArrayList<MatchItem> matches) -> {
-
 
 
                 toggleNetworkUpdates(view);

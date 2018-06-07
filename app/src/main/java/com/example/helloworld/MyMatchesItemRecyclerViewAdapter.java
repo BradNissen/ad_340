@@ -71,9 +71,9 @@ public class MyMatchesItemRecyclerViewAdapter extends RecyclerView.Adapter<MyMat
         String match_lng_str = mValues.get(position).longitude;
 
 //        holder.tv_lat.setText(match_lat_str);
-//        holder.tv_longitude.setText(match_lng_str);
-//        holder.tv_gps_lat.setText(gps_lat);
-//        holder.tv_gps_lng.setText(gps_lng);
+////////        holder.tv_longitude.setText(match_lng_str);
+////////        holder.tv_gps_lat.setText(gps_lat);
+////////        holder.tv_gps_lng.setText(gps_lng);
 
         double distance = geoToDistanceInMiles(match_lat_str,match_lng_str,gps_lat,gps_lng);
         Log.v("Distance..", String.valueOf(distance));

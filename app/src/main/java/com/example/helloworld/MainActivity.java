@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
