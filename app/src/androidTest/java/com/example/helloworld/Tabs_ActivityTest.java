@@ -2,23 +2,29 @@ package com.example.helloworld;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.SystemClock;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.view.View;
 
+import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
 
 @RunWith(AndroidJUnit4.class)
 public class Tabs_ActivityTest {
@@ -75,18 +81,22 @@ public class Tabs_ActivityTest {
 
     @Test
     public void swipeTabsTest(){
-        onView(withId(R.id.container)).perform(swipeLeft());
-        onView(withId(R.id.container)).perform(swipeLeft());
-        onView(withId(R.id.container)).perform(swipeRight());
 
-        //onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button), click()));
-        //onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        Matcher<View> matcher = allOf(withText("Profile"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher).perform(click());
+        SystemClock.sleep(1000);
 
-//        onView(withId(R.id.my_recycler_view)).perform(RecyclerViewActions
-//                .actionOnItem(RecyclerViewActions.actionOnItem(withId(R.id.favorite_button))), click()));
 
-        onView(ViewMatchers.withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(7, ViewActions.click()));
+        Matcher<View> matcher1 = allOf(withText("Matches"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher1).perform(click());
+        SystemClock.sleep(1000);
+
+        Matcher<View> matcher2 = allOf(withText("Settings"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher2).perform(click());
+        SystemClock.sleep(1000);
 
     }
 
