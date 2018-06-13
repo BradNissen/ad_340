@@ -154,26 +154,26 @@ public class MainActivityTest {
 //    }
 
     //PASSED
-    @Test
-    public void checkDataOnNextActivity() {
-
-        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
-        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
-        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
-        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
-        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
-        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
-        Espresso.closeSoftKeyboard();
-        setDate(R.id.dateTextView, 1990, 8, 13);
-        Espresso.closeSoftKeyboard();
-        onView(withId(R.id.SubmitButton)).perform(click());
-
-        Espresso.onView(withId(R.id.nameDisplayTextView)).check(matches(isDisplayed()));
-        Espresso.onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
-        Espresso.onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
-        Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
-        Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
-    }
+//    @Test
+//    public void checkDataOnNextActivity() {
+//
+//        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+//        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+//        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+//        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+//        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+//        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
+//        Espresso.closeSoftKeyboard();
+//        setDate(R.id.dateTextView, 1990, 8, 13);
+//        Espresso.closeSoftKeyboard();
+//        onView(withId(R.id.SubmitButton)).perform(click());
+//
+//        Espresso.onView(withId(R.id.nameDisplayTextView)).check(matches(isDisplayed()));
+//        Espresso.onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
+//        Espresso.onView(withId(R.id.locationDisplayTextView)).check(matches(withText(city)));
+//        Espresso.onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
+//        Espresso.onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
+//    }
 
     public static void setDate(int datePickerLaunchViewId, int year, int monthOfYear, int dayOfMonth) {
         onView(withId(datePickerLaunchViewId)).perform(click());
