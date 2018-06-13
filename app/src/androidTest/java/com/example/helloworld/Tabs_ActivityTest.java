@@ -55,29 +55,29 @@ public class Tabs_ActivityTest {
         }
     };
 
-    //PASSED
-    @Test
-    public void rotateScreenTest(){
-        //check the fields are filled.
-        onView(withId(R.id.nameDisplayTextView)).check(matches(withText(name)));
-        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
-        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(location)));
-        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
-        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
-
-        //flip the screen
-        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        //check the fields again
-        onView(withId(R.id.nameDisplayTextView)).check(matches(withText(name)));
-        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
-        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(location)));
-        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
-        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
-
-        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    }
+//    //PASSED
+//    @Test
+//    public void rotateScreenTest(){
+//        //check the fields are filled.
+//        onView(withId(R.id.nameDisplayTextView)).check(matches(withText(name)));
+//        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
+//        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(location)));
+//        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
+//        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
 //
+//        //flip the screen
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//
+//        //check the fields again
+//        onView(withId(R.id.nameDisplayTextView)).check(matches(withText(name)));
+//        onView(withId(R.id.ageDisplayTextView)).check(matches(withText(age)));
+//        onView(withId(R.id.locationDisplayTextView)).check(matches(withText(location)));
+//        onView(withId(R.id.occupationDisplayTextView)).check(matches(withText(job)));
+//        onView(withId(R.id.descriptionDisplayTextView)).check(matches(withText(desc)));
+//
+//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//    }
+////
 
     @Test
     public void swipeTabsTest(){
