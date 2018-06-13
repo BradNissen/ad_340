@@ -126,8 +126,14 @@ public class MatchesItemFragment extends Fragment {
                     Location loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
 
-                    latitudeNetwork = loc.getLatitude();
-                    longitudeNetwork = loc.getLongitude();
+                    try {
+                        latitudeNetwork = loc.getLatitude();
+                        longitudeNetwork = loc.getLongitude();
+                    } catch (NullPointerException n){
+                        //seattle
+                        latitudeNetwork = 47.6062;
+                        longitudeNetwork = 122.3321;
+                    }
                     Log.v("LAT_LNG","LAT="+String.valueOf(latitudeNetwork) + " LNG=" + String.valueOf(longitudeNetwork));
                 }
 
