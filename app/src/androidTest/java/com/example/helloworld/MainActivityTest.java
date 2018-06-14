@@ -179,5 +179,7 @@ public class MainActivityTest {
         onView(withId(datePickerLaunchViewId)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(year, monthOfYear, dayOfMonth));
         onView(withId(android.R.id.button1)).perform(click());
+
+
     }
 }
