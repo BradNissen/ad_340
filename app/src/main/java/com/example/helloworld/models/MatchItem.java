@@ -23,13 +23,13 @@ public class MatchItem implements Parcelable {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public MatchItem(String imageUrl, boolean liked, String name, String lat, String longitude) {
-        this.imageUrl = imageUrl;
-        this.liked = liked;
-        this.name = name;
-        this.lat = lat;
-        this.longitude = longitude;
-    }
+//    public MatchItem(String imageUrl, boolean liked, String name, String lat, String longitude) {
+//        this.imageUrl = imageUrl;
+//        this.liked = liked;
+//        this.name = name;
+//        this.lat = lat;
+//        this.longitude = longitude;
+//    }
 
     public MatchItem(Parcel in) {
         imageUrl = in.readString();
@@ -52,20 +52,20 @@ public class MatchItem implements Parcelable {
         }
     };
 
-    @Exclude
-    public Map<String, Object> toMap() {
-
-        HashMap<String, Object> result = new HashMap<>();
-
-        result.put("imageUrl", imageUrl);
-        result.put("liked", liked);
-        result.put("name", name);
-        result.put("uid", uid);
-        result.put("lat", lat);
-        result.put("longitude", longitude);
-
-        return result;
-    }
+//    @Exclude
+//    public Map<String, Object> toMap() {
+//
+//        HashMap<String, Object> result = new HashMap<>();
+//
+//        result.put("imageUrl", imageUrl);
+//        result.put("liked", liked);
+//        result.put("name", name);
+//        result.put("uid", uid);
+//        result.put("lat", lat);
+//        result.put("longitude", longitude);
+//
+//        return result;
+//    }
 
     @Override
     public int describeContents() {
@@ -75,10 +75,10 @@ public class MatchItem implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
-        dest.writeString(imageUrl);
-        dest.writeByte((byte) (liked ? 1 : 0));
-        dest.writeString(name);
-        dest.writeString(lat);
-        dest.writeString(longitude);
+//        dest.writeString(imageUrl);
+//        dest.writeByte((byte) (liked ? 1 : 0));
+//        dest.writeString(name);
+//        dest.writeString(lat);
+//        dest.writeString(longitude);
     }
 }

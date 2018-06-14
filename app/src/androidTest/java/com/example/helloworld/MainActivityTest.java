@@ -48,6 +48,7 @@ public class MainActivityTest {
     @Test
     public void validInputTest() {
 
+        //activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
@@ -57,12 +58,13 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
-        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Espresso.closeSoftKeyboard();
         SystemClock.sleep(1000);
         onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
+        SystemClock.sleep(1000);
         Espresso.pressBackUnconditionally();
+        SystemClock.sleep(1000);
 
     }
 
