@@ -76,7 +76,8 @@ public class MainActivityTest {
         activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.SubmitButton)).perform(scrollTo());
-        onView(withId(R.id.SubmitButton)).perform(click());Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(click());
+        Espresso.closeSoftKeyboard();
         SystemClock.sleep(1000);
         Espresso.pressBackUnconditionally();
         SystemClock.sleep(1000);
@@ -133,7 +134,7 @@ public class MainActivityTest {
         setDate(R.id.dateTextView, Integer.valueOf(bday_year) - 18, Integer.valueOf(bday_month), Integer.valueOf(bday_day));
 
         Espresso.closeSoftKeyboard();
-
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
     }
 
@@ -181,6 +182,9 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         //onView(withId(R.id.dateTextView)).perform(swipeUp());
         onView(withId(R.id.SubmitButton)).check(matches(withText("You must be 18 yrs. old.")));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
+        
         onView(withId(R.id.SubmitButton)).perform(click());
         SystemClock.sleep(1000);
         onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
