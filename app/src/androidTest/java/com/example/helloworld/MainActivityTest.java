@@ -10,10 +10,18 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.DatePicker;
 
+
 import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -48,20 +56,27 @@ public class MainActivityTest {
     @Test
     public void validInputTest() {
 
-        //activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
         onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
         Espresso.closeSoftKeyboard();
+        //Espresso.closeSoftKeyboard();
+        SystemClock.sleep(2000);
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
+
+        //error here the bday isn't kept
+        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Espresso.closeSoftKeyboard();
-        SystemClock.sleep(1000);
-        onView(withId(R.id.SubmitButton)).perform(ViewActions.scrollTo());
-        onView(withId(R.id.SubmitButton)).perform(click());
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
+        onView(withId(R.id.SubmitButton)).perform(click());Espresso.closeSoftKeyboard();
         SystemClock.sleep(1000);
         Espresso.pressBackUnconditionally();
         SystemClock.sleep(1000);
@@ -74,8 +89,11 @@ public class MainActivityTest {
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
         Espresso.closeSoftKeyboard();
         setDate(R.id.dateTextView, 1990, 8, 13);
@@ -91,23 +109,31 @@ public class MainActivityTest {
 
     }
 
-    //PASSED
+    //FAILED
     @Test
     public void birthdayIsToday() {
+
+        //get today's date, then subtract 18
+        LocalDate localDate = LocalDate.now();
+        String bday_year = DateTimeFormatter.ofPattern("yyy").format(localDate);
+        String bday_month = DateTimeFormatter.ofPattern("MM").format(localDate);
+        String bday_day = DateTimeFormatter.ofPattern("dd").format(localDate);
+
+
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
         Espresso.closeSoftKeyboard();
-        setDate(R.id.dateTextView, 2000, 05, 03);
+        setDate(R.id.dateTextView, Integer.valueOf(bday_year) - 18, Integer.valueOf(bday_month), Integer.valueOf(bday_day));
 
-//        // rotate the screen before
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        activityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         Espresso.closeSoftKeyboard();
+
         onView(withId(R.id.SubmitButton)).perform(click());
     }
 
@@ -115,9 +141,12 @@ public class MainActivityTest {
     @Test
     public void inputSubmitError1(){
         onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
         Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
 
     }
@@ -126,34 +155,37 @@ public class MainActivityTest {
     @Test
     public void inputSubmitError2(){
         onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
         Espresso.closeSoftKeyboard();
+        onView(withId(R.id.SubmitButton)).perform(scrollTo());
         onView(withId(R.id.SubmitButton)).perform(click());
     }
 
-//    //PASSED
-//    @Test
-//    public void invalidBirthday() {
-//        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
-//        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
-//        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
-//        Espresso.closeSoftKeyboard();
-//        setDate(R.id.dateTextView, 2005, 1, 1);
-//        Espresso.closeSoftKeyboard();
-//        //onView(withId(R.id.dateTextView)).perform(swipeUp());
-//        onView(withId(R.id.SubmitButton)).check(matches(withText("You must be 18 yrs. old.")));
-//        onView(withId(R.id.SubmitButton)).perform(click());
-//        SystemClock.sleep(1000);
-//        onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
-//
-//    }
+    //PASSED
+    @Test
+    public void invalidBirthday() {
+        onView(withId(R.id.nameTextEdit)).perform(typeText(name));
+        onView(withId(R.id.UserNameTextEdit)).perform(typeText(username));
+        onView(withId(R.id.EmailTextEdit)).perform(typeText(email));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.locationTextEdit)).perform(typeText(city));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.jobTextEdit)).perform(typeText(job));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.descriptionTextEdit)).perform(typeText(desc));
+        Espresso.closeSoftKeyboard();
+        setDate(R.id.dateTextView, 2005, 1, 1);
+        Espresso.closeSoftKeyboard();
+        //onView(withId(R.id.dateTextView)).perform(swipeUp());
+        onView(withId(R.id.SubmitButton)).check(matches(withText("You must be 18 yrs. old.")));
+        onView(withId(R.id.SubmitButton)).perform(click());
+        SystemClock.sleep(1000);
+        onView(withId(R.id.SubmitButton)).check(matches(withText("birthday input error\n")));
+
+    }
 
     //PASSED
 //    @Test
